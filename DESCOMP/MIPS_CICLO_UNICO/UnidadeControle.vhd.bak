@@ -1,0 +1,52 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity UnidadeControle is
+  port ( 
+			opcode                 : in  std_logic_vector(5 downto 0);
+			
+         Sel_Mux_PC4_JMP        : out std_logic;
+			Sel_Mux_Rt_Rd          : out std_logic;
+			habEscrita_Banco_Regs  : out std_logic;
+			Sel_Mux_Rt_Imediato    : out std_logic;
+			tipoR                  : out std_logic;
+			Sel_Mux_ULA_RAM        : out std_logic;
+			BEQ						  : out std_logic;
+			habLeituraMEM          : out std_logic;
+			habEscritaMEM          : out std_logic
+		);
+		
+		
+end entity;
+
+architecture comportamento of UnidadeControle is
+
+  -- tipo I
+  constant SW   : std_logic_vector(5 downto 0) := "101011";
+  constant LW   : std_logic_vector(5 downto 0) := "100011";
+  constant BEQ  : std_logic_vector(5 downto 0) := "000100";
+  
+  --tipo R
+  constant SOMA : std_logic_vector(5 downto 0) := "000000";
+  constant SUB  : std_logic_vector(5 downto 0) := "000000";
+  constant ANDr : std_logic_vector(5 downto 0) := "000000";
+  constant ORr  : std_logic_vector(5 downto 0) := "000000";
+  constant SLT  : std_logic_vector(5 downto 0) := "000000";
+  
+  
+  --tipo J
+  constant JMP  : std_logic_vector(5 downto 0) := "000010";
+
+begin
+	
+	Sel_Mux_PC4_JMP       <= '1' when (opcode  = JMP) else '0';
+	Sel_Mux_Rt_Rd         <= '1' when ((opcode = SOMA) OR (opcode = SUB) OR (opcode = ANDr) OR (opcode = ORr) OR (opcode = SLT)) else '0';
+	habEscrita_Banco_Regs <= '1' when ((opcode = SOMA) OR (opcode = SUB) OR (opcode = ANDr) OR (opcode = ORr) OR (opcode = SLT) OR (opcode = LW)) else '0';
+	Sel_Mux_Rt_Imediato   <= '1' when ((opcode = SW)   OR (opcode = LW)) else '0';
+	tipoR						 <= '1' when ((opcode = SOMA) OR (opcode = SUB) OR (opcode = ANDr) OR (opcode = ORr) OR (opcode = SLT)) else '0';
+	Sel_Mux_ULA_RAM       <= '1' when (opcode  = LW) else '0';
+	BEQ						 <= '1' when (opcode  = BEQ) else '0';
+	habLeituraMEM			 <= '1' when (opcode  = LW) else '0';
+	habEscritaMEM         <= '1' when (opcode  = SW) else '0';
+
+end architecture;

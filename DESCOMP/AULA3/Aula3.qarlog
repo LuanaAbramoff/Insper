@@ -1,0 +1,24 @@
+Quartus Prime Archive log --	C:/DESCOMP/AULA3/Aula3.qarlog
+
+Archive:	C:/DESCOMP/AULA3/Aula3.qar
+Date:		Thu Feb 29 17:13:47 2024
+Quartus Prime		20.1.0 Build 711 06/05/2020 SJ Lite Edition
+
+	=========== Files Selected: ===========
+C:/DESCOMP/AULA3/Aula3.qpf
+C:/DESCOMP/AULA3/Aula3.qsf
+C:/DESCOMP/AULA3/Aula3.vhd
+C:/DESCOMP/AULA3/ULASomaSub.vhd
+C:/DESCOMP/AULA3/Waveform.vwf
+C:/DESCOMP/AULA3/db/Aula3.cmp.rdb
+C:/DESCOMP/AULA3/decoderInstru.vhd
+C:/DESCOMP/AULA3/edgeDetector.vhd
+C:/DESCOMP/AULA3/memoriaROM.vhd
+C:/DESCOMP/AULA3/muxGenerico2x1.vhd
+C:/DESCOMP/AULA3/registradorGenerico.vhd
+C:/DESCOMP/AULA3/somaConstante.vhd
+c:/intelfpga_lite/20.1/quartus/bin64/assignment_defaults.qdf
+	======= Total: 13 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.

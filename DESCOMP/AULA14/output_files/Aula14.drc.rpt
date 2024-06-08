@@ -1,0 +1,362 @@
+Design Assistant report for Aula14
+Fri May 03 14:20:14 2024
+Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Design Assistant Summary
+  3. Parallel Compilation
+  4. Design Assistant Settings
+  5. Information only Violations
+  6. Design Assistant Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------+
+; Design Assistant Summary                                                ;
++-----------------------------------+-------------------------------------+
+; Design Assistant Status           ; Analyzed - Fri May 03 14:20:13 2024 ;
+; Revision Name                     ; Aula14                              ;
+; Top-level Entity Name             ; Aula14                              ;
+; Family                            ; Cyclone V                           ;
+; Total Critical Violations         ; 0                                   ;
+; Total High Violations             ; 0                                   ;
+; Total Medium Violations           ; 0                                   ;
+; Total Information only Violations ; 158                                 ;
+; - Rule T101                       ; 108                                 ;
+; - Rule T102                       ; 50                                  ;
++-----------------------------------+-------------------------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 3           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
++----------------------------+-------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Design Assistant Settings                                                                                                                                                                  ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------+----+
+; Option                                                                                                                                                               ; Setting        ; To ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------+----+
+; Design Assistant mode                                                                                                                                                ; Post-Synthesis ;    ;
+; Threshold value for clock net not mapped to clock spines rule                                                                                                        ; 25             ;    ;
+; Minimum number of clock port feed by gated clocks                                                                                                                    ; 30             ;    ;
+; Minimum number of node fan-out                                                                                                                                       ; 30             ;    ;
+; Maximum number of nodes to report                                                                                                                                    ; 50             ;    ;
+; Rule C101: Gated clock should be implemented according to the Intel FPGA standard scheme                                                                             ; On             ;    ;
+; Rule C102: Logic cell should not be used to generate an inverted clock signal                                                                                        ; On             ;    ;
+; Rule C103: Gated clock does not feed at least a pre-defined number of clock ports to effectively save power                                                          ; On             ;    ;
+; Rule C104: Clock signal source should drive only clock input ports                                                                                                   ; On             ;    ;
+; Rule C105: Clock signal should be a global signal                                                                                                                    ; On             ;    ;
+; Rule C106: Clock signal source should not drive registers triggered by different clock edges                                                                         ; On             ;    ;
+; Rule R101: Combinational logic used as a reset signal should be synchronized                                                                                         ; On             ;    ;
+; Rule R102: External reset signals should be synchronized using two cascaded registers                                                                                ; On             ;    ;
+; Rule R103: External reset signal should be correctly synchronized                                                                                                    ; On             ;    ;
+; Rule R104: The reset signal that is generated in one clock domain and used in another clock domain should be correctly synchronized                                  ; On             ;    ;
+; Rule R105: The reset signal that is generated in one clock domain and used in another clock domain should be synchronized                                            ; On             ;    ;
+; Rule T101: Nodes with more than the specified number of fan-outs                                                                                                     ; On             ;    ;
+; Rule T102: Top nodes with the highest number of fan-outs                                                                                                             ; On             ;    ;
+; Rule A101: Design should not contain combinational loops                                                                                                             ; On             ;    ;
+; Rule A102: Register output should not drive its own control signal directly or through combinational logic                                                           ; On             ;    ;
+; Rule A103: Design should not contain delay chains                                                                                                                    ; On             ;    ;
+; Rule A104: Design should not contain ripple clock structures                                                                                                         ; On             ;    ;
+; Rule A105: Pulses should not be implemented asynchronously                                                                                                           ; On             ;    ;
+; Rule A106: Multiple pulses should not be generated in design                                                                                                         ; On             ;    ;
+; Rule A107: Design should not contain SR latches                                                                                                                      ; On             ;    ;
+; Rule A108: Design should not contain latches                                                                                                                         ; On             ;    ;
+; Rule S101: Output enable and input of the same tri-state node should not be driven by same signal source                                                             ; On             ;    ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source                                                ; On             ;    ;
+; Rule S103: More than one asynchronous port of a register should not be driven by the same signal source                                                              ; On             ;    ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                                                                ; On             ;    ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains                                                                        ; On             ;    ;
+; Rule D102: Multiple data bits that are transferred across asynchronous clock domains are synchronized, but not all bits may be aligned in the receiving clock domain ; On             ;    ;
+; Rule D103: Data bits are not correctly synchronized when transferred between asynchronous clock domains                                                              ; On             ;    ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------+----+
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; Information only Violations                                                                                        ;
++------------------------------------------------------------------+---------------------------------------+---------+
+; Rule name                                                        ; Name                                  ; Fan-Out ;
++------------------------------------------------------------------+---------------------------------------+---------+
+; Rule T101: Nodes with more than the specified number of fan-outs ; registradorGenerico:PC|DOUT[2]        ; 71      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; KEY[0]~inputCLKENA0                   ; 2110    ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; decoderGeneric:decoderInstru|Equal1~0 ; 97      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; ROMMIPS:ROM|memROM~0                  ; 2145    ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; bancoReg:bancoRegs|registrador~1094   ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; ULASomaSub:ULA|Add0~29                ; 292     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; ULASomaSub:ULA|Add0~13                ; 286     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; ULASomaSub:ULA|Add0~25                ; 292     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; ULASomaSub:ULA|Add0~9                 ; 286     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; ULASomaSub:ULA|Add0~21                ; 289     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; ULASomaSub:ULA|Add0~17                ; 289     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2886               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; bancoReg:bancoRegs|registrador~1066   ; 65      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2878               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2870               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2862               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2854               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2852               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2850               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2848               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2822               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2814               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2806               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2798               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2790               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2782               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2774               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2766               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2884               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2846               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2820               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2788               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2876               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2844               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2812               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2780               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2868               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2842               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2804               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2772               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2860               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2840               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2796               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2764               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2882               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2838               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2818               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2786               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2874               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2836               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2810               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2778               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2866               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2834               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2802               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2770               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2858               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2832               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2794               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2762               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2880               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2830               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2816               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2784               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2872               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2828               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2808               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2776               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2864               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2826               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2800               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2768               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2856               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2824               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2792               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RAMMIPS:RAM|memRAM~2760               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; ROMMIPS:ROM|memROM~1                  ; 64      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; bancoReg:bancoRegs|registrador~1067   ; 65      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; bancoReg:bancoRegs|registrador~1064   ; 65      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; bancoReg:bancoRegs|registrador~1068   ; 65      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; bancoReg:bancoRegs|registrador~1065   ; 65      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; bancoReg:bancoRegs|registrador~1063   ; 65      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; bancoReg:bancoRegs|registrador~1069   ; 65      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; bancoReg:bancoRegs|registrador~1062   ; 65      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; bancoReg:bancoRegs|registrador~1070   ; 65      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; bancoReg:bancoRegs|registrador~1071   ; 65      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; bancoReg:bancoRegs|registrador~1072   ; 65      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; bancoReg:bancoRegs|registrador~1073   ; 65      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; bancoReg:bancoRegs|registrador~1074   ; 65      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; bancoReg:bancoRegs|registrador~1075   ; 65      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; bancoReg:bancoRegs|registrador~1076   ; 65      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; bancoReg:bancoRegs|registrador~1077   ; 65      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; bancoReg:bancoRegs|registrador~1078   ; 65      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; bancoReg:bancoRegs|registrador~1079   ; 65      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; bancoReg:bancoRegs|registrador~1080   ; 65      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; bancoReg:bancoRegs|registrador~1081   ; 65      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; bancoReg:bancoRegs|registrador~1082   ; 65      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; bancoReg:bancoRegs|registrador~1083   ; 65      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; bancoReg:bancoRegs|registrador~1084   ; 65      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; bancoReg:bancoRegs|registrador~1085   ; 65      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; bancoReg:bancoRegs|registrador~1086   ; 65      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; bancoReg:bancoRegs|registrador~1087   ; 65      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; bancoReg:bancoRegs|registrador~1088   ; 65      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; bancoReg:bancoRegs|registrador~1089   ; 65      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; bancoReg:bancoRegs|registrador~1090   ; 65      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; bancoReg:bancoRegs|registrador~1091   ; 65      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; bancoReg:bancoRegs|registrador~1092   ; 65      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; bancoReg:bancoRegs|registrador~1093   ; 65      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ROMMIPS:ROM|memROM~0                  ; 2145    ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; KEY[0]~inputCLKENA0                   ; 2110    ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ULASomaSub:ULA|Add0~25                ; 292     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ULASomaSub:ULA|Add0~29                ; 292     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ULASomaSub:ULA|Add0~17                ; 289     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ULASomaSub:ULA|Add0~21                ; 289     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ULASomaSub:ULA|Add0~13                ; 286     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ULASomaSub:ULA|Add0~9                 ; 286     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; decoderGeneric:decoderInstru|Equal1~0 ; 97      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; registradorGenerico:PC|DOUT[2]        ; 71      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; bancoReg:bancoRegs|registrador~1068   ; 65      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; bancoReg:bancoRegs|registrador~1066   ; 65      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; bancoReg:bancoRegs|registrador~1080   ; 65      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; bancoReg:bancoRegs|registrador~1067   ; 65      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; bancoReg:bancoRegs|registrador~1078   ; 65      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; bancoReg:bancoRegs|registrador~1071   ; 65      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; bancoReg:bancoRegs|registrador~1065   ; 65      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; bancoReg:bancoRegs|registrador~1093   ; 65      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; bancoReg:bancoRegs|registrador~1064   ; 65      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; bancoReg:bancoRegs|registrador~1075   ; 65      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; bancoReg:bancoRegs|registrador~1069   ; 65      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; bancoReg:bancoRegs|registrador~1062   ; 65      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; bancoReg:bancoRegs|registrador~1070   ; 65      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; bancoReg:bancoRegs|registrador~1074   ; 65      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; bancoReg:bancoRegs|registrador~1079   ; 65      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; bancoReg:bancoRegs|registrador~1076   ; 65      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; bancoReg:bancoRegs|registrador~1072   ; 65      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; bancoReg:bancoRegs|registrador~1073   ; 65      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; bancoReg:bancoRegs|registrador~1063   ; 65      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; bancoReg:bancoRegs|registrador~1077   ; 65      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; bancoReg:bancoRegs|registrador~1081   ; 65      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; bancoReg:bancoRegs|registrador~1082   ; 65      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; bancoReg:bancoRegs|registrador~1083   ; 65      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; bancoReg:bancoRegs|registrador~1084   ; 65      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; bancoReg:bancoRegs|registrador~1085   ; 65      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; bancoReg:bancoRegs|registrador~1086   ; 65      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; bancoReg:bancoRegs|registrador~1087   ; 65      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; bancoReg:bancoRegs|registrador~1088   ; 65      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; bancoReg:bancoRegs|registrador~1089   ; 65      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; bancoReg:bancoRegs|registrador~1090   ; 65      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; bancoReg:bancoRegs|registrador~1091   ; 65      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; bancoReg:bancoRegs|registrador~1092   ; 65      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ROMMIPS:ROM|memROM~1                  ; 64      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; RAMMIPS:RAM|memRAM~2872               ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; RAMMIPS:RAM|memRAM~2798               ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; RAMMIPS:RAM|memRAM~2832               ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; RAMMIPS:RAM|memRAM~2884               ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; RAMMIPS:RAM|memRAM~2844               ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; RAMMIPS:RAM|memRAM~2816               ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; RAMMIPS:RAM|memRAM~2838               ; 32      ;
++------------------------------------------------------------------+---------------------------------------+---------+
+
+
++---------------------------+
+; Design Assistant Messages ;
++---------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Design Assistant
+    Info: Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+    Info: Processing started: Fri May 03 14:20:12 2024
+Info: Command: quartus_drc Aula14 -c Aula14
+Critical Warning (332012): Synopsys Design Constraints File file not found: 'Aula14.sdc'. A Synopsys Design Constraints File is required by the Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+Info (332144): No user constrained base clocks found in the design
+Info (332143): No user constrained clock uncertainty found in the design. Calling "derive_clock_uncertainty"
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
+Info (308046): (Information) Rule T101: Nodes with more than the specified number of fan-outs. (Value defined:30). Found 108 node(s) with highest fan-out.
+    Info (308011): Node  "registradorGenerico:PC|DOUT[2]" File: C:/DESCOMP/AULA14/registradorGenerico.vhd Line: 30
+    Info (308011): Node  "KEY[0]~inputCLKENA0" File: C:/DESCOMP/AULA14/Aula14.vhd Line: 12
+    Info (308011): Node  "decoderGeneric:decoderInstru|Equal1~0" File: C:/DESCOMP/AULA14/decoderGeneric.vhd Line: 16
+    Info (308011): Node  "ROMMIPS:ROM|memROM~0" File: C:/DESCOMP/AULA14/ROMMIPS.vhd Line: 29
+    Info (308011): Node  "bancoReg:bancoRegs|registrador~1094" File: C:/DESCOMP/AULA14/bancoReg.vhd Line: 34
+    Info (308011): Node  "ULASomaSub:ULA|Add0~29" File: C:/DESCOMP/AULA14/ULASomaSub.vhd Line: 18
+    Info (308011): Node  "ULASomaSub:ULA|Add0~13" File: C:/DESCOMP/AULA14/ULASomaSub.vhd Line: 18
+    Info (308011): Node  "ULASomaSub:ULA|Add0~25" File: C:/DESCOMP/AULA14/ULASomaSub.vhd Line: 18
+    Info (308011): Node  "ULASomaSub:ULA|Add0~9" File: C:/DESCOMP/AULA14/ULASomaSub.vhd Line: 18
+    Info (308011): Node  "ULASomaSub:ULA|Add0~21" File: C:/DESCOMP/AULA14/ULASomaSub.vhd Line: 18
+    Info (308011): Node  "ULASomaSub:ULA|Add0~17" File: C:/DESCOMP/AULA14/ULASomaSub.vhd Line: 18
+    Info (308011): Node  "RAMMIPS:RAM|memRAM~2886" File: C:/DESCOMP/AULA14/RAMMIPS.vhd Line: 21
+    Info (308011): Node  "bancoReg:bancoRegs|registrador~1066" File: C:/DESCOMP/AULA14/bancoReg.vhd Line: 34
+    Info (308011): Node  "RAMMIPS:RAM|memRAM~2878" File: C:/DESCOMP/AULA14/RAMMIPS.vhd Line: 21
+    Info (308011): Node  "RAMMIPS:RAM|memRAM~2870" File: C:/DESCOMP/AULA14/RAMMIPS.vhd Line: 21
+    Info (308011): Node  "RAMMIPS:RAM|memRAM~2862" File: C:/DESCOMP/AULA14/RAMMIPS.vhd Line: 21
+    Info (308011): Node  "RAMMIPS:RAM|memRAM~2854" File: C:/DESCOMP/AULA14/RAMMIPS.vhd Line: 21
+    Info (308011): Node  "RAMMIPS:RAM|memRAM~2852" File: C:/DESCOMP/AULA14/RAMMIPS.vhd Line: 21
+    Info (308011): Node  "RAMMIPS:RAM|memRAM~2850" File: C:/DESCOMP/AULA14/RAMMIPS.vhd Line: 21
+    Info (308011): Node  "RAMMIPS:RAM|memRAM~2848" File: C:/DESCOMP/AULA14/RAMMIPS.vhd Line: 21
+    Info (308011): Node  "RAMMIPS:RAM|memRAM~2822" File: C:/DESCOMP/AULA14/RAMMIPS.vhd Line: 21
+    Info (308011): Node  "RAMMIPS:RAM|memRAM~2814" File: C:/DESCOMP/AULA14/RAMMIPS.vhd Line: 21
+    Info (308011): Node  "RAMMIPS:RAM|memRAM~2806" File: C:/DESCOMP/AULA14/RAMMIPS.vhd Line: 21
+    Info (308011): Node  "RAMMIPS:RAM|memRAM~2798" File: C:/DESCOMP/AULA14/RAMMIPS.vhd Line: 21
+    Info (308011): Node  "RAMMIPS:RAM|memRAM~2790" File: C:/DESCOMP/AULA14/RAMMIPS.vhd Line: 21
+    Info (308011): Node  "RAMMIPS:RAM|memRAM~2782" File: C:/DESCOMP/AULA14/RAMMIPS.vhd Line: 21
+    Info (308011): Node  "RAMMIPS:RAM|memRAM~2774" File: C:/DESCOMP/AULA14/RAMMIPS.vhd Line: 21
+    Info (308011): Node  "RAMMIPS:RAM|memRAM~2766" File: C:/DESCOMP/AULA14/RAMMIPS.vhd Line: 21
+    Info (308011): Node  "RAMMIPS:RAM|memRAM~2884" File: C:/DESCOMP/AULA14/RAMMIPS.vhd Line: 21
+    Info (308011): Node  "RAMMIPS:RAM|memRAM~2846" File: C:/DESCOMP/AULA14/RAMMIPS.vhd Line: 21
+    Info (308002): Truncated list of Design Assistant messages to 30 messages. Go to sections under Design Assistant section of Compilation Report for complete lists of Design Assistant messages generated.
+Info (308044): (Information) Rule T102: Top nodes with the highest number of fan-outs. (Value defined:50). Found 50 node(s) with highest fan-out.
+    Info (308011): Node  "ROMMIPS:ROM|memROM~0" File: C:/DESCOMP/AULA14/ROMMIPS.vhd Line: 29
+    Info (308011): Node  "KEY[0]~inputCLKENA0" File: C:/DESCOMP/AULA14/Aula14.vhd Line: 12
+    Info (308011): Node  "ULASomaSub:ULA|Add0~25" File: C:/DESCOMP/AULA14/ULASomaSub.vhd Line: 18
+    Info (308011): Node  "ULASomaSub:ULA|Add0~29" File: C:/DESCOMP/AULA14/ULASomaSub.vhd Line: 18
+    Info (308011): Node  "ULASomaSub:ULA|Add0~17" File: C:/DESCOMP/AULA14/ULASomaSub.vhd Line: 18
+    Info (308011): Node  "ULASomaSub:ULA|Add0~21" File: C:/DESCOMP/AULA14/ULASomaSub.vhd Line: 18
+    Info (308011): Node  "ULASomaSub:ULA|Add0~13" File: C:/DESCOMP/AULA14/ULASomaSub.vhd Line: 18
+    Info (308011): Node  "ULASomaSub:ULA|Add0~9" File: C:/DESCOMP/AULA14/ULASomaSub.vhd Line: 18
+    Info (308011): Node  "decoderGeneric:decoderInstru|Equal1~0" File: C:/DESCOMP/AULA14/decoderGeneric.vhd Line: 16
+    Info (308011): Node  "registradorGenerico:PC|DOUT[2]" File: C:/DESCOMP/AULA14/registradorGenerico.vhd Line: 30
+    Info (308011): Node  "bancoReg:bancoRegs|registrador~1068" File: C:/DESCOMP/AULA14/bancoReg.vhd Line: 34
+    Info (308011): Node  "bancoReg:bancoRegs|registrador~1066" File: C:/DESCOMP/AULA14/bancoReg.vhd Line: 34
+    Info (308011): Node  "bancoReg:bancoRegs|registrador~1080" File: C:/DESCOMP/AULA14/bancoReg.vhd Line: 34
+    Info (308011): Node  "bancoReg:bancoRegs|registrador~1067" File: C:/DESCOMP/AULA14/bancoReg.vhd Line: 34
+    Info (308011): Node  "bancoReg:bancoRegs|registrador~1078" File: C:/DESCOMP/AULA14/bancoReg.vhd Line: 34
+    Info (308011): Node  "bancoReg:bancoRegs|registrador~1071" File: C:/DESCOMP/AULA14/bancoReg.vhd Line: 34
+    Info (308011): Node  "bancoReg:bancoRegs|registrador~1065" File: C:/DESCOMP/AULA14/bancoReg.vhd Line: 34
+    Info (308011): Node  "bancoReg:bancoRegs|registrador~1093" File: C:/DESCOMP/AULA14/bancoReg.vhd Line: 34
+    Info (308011): Node  "bancoReg:bancoRegs|registrador~1064" File: C:/DESCOMP/AULA14/bancoReg.vhd Line: 34
+    Info (308011): Node  "bancoReg:bancoRegs|registrador~1075" File: C:/DESCOMP/AULA14/bancoReg.vhd Line: 34
+    Info (308011): Node  "bancoReg:bancoRegs|registrador~1069" File: C:/DESCOMP/AULA14/bancoReg.vhd Line: 34
+    Info (308011): Node  "bancoReg:bancoRegs|registrador~1062" File: C:/DESCOMP/AULA14/bancoReg.vhd Line: 34
+    Info (308011): Node  "bancoReg:bancoRegs|registrador~1070" File: C:/DESCOMP/AULA14/bancoReg.vhd Line: 34
+    Info (308011): Node  "bancoReg:bancoRegs|registrador~1074" File: C:/DESCOMP/AULA14/bancoReg.vhd Line: 34
+    Info (308011): Node  "bancoReg:bancoRegs|registrador~1079" File: C:/DESCOMP/AULA14/bancoReg.vhd Line: 34
+    Info (308011): Node  "bancoReg:bancoRegs|registrador~1076" File: C:/DESCOMP/AULA14/bancoReg.vhd Line: 34
+    Info (308011): Node  "bancoReg:bancoRegs|registrador~1072" File: C:/DESCOMP/AULA14/bancoReg.vhd Line: 34
+    Info (308011): Node  "bancoReg:bancoRegs|registrador~1073" File: C:/DESCOMP/AULA14/bancoReg.vhd Line: 34
+    Info (308011): Node  "bancoReg:bancoRegs|registrador~1063" File: C:/DESCOMP/AULA14/bancoReg.vhd Line: 34
+    Info (308011): Node  "bancoReg:bancoRegs|registrador~1077" File: C:/DESCOMP/AULA14/bancoReg.vhd Line: 34
+    Info (308002): Truncated list of Design Assistant messages to 30 messages. Go to sections under Design Assistant section of Compilation Report for complete lists of Design Assistant messages generated.
+Info (308006): Design Assistant information: finished post-synthesis analysis of current design -- generated 158 information messages and 0 warning messages
+Info: Quartus Prime Design Assistant was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 4911 megabytes
+    Info: Processing ended: Fri May 03 14:20:14 2024
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:02
+
+

@@ -1,0 +1,53 @@
+Quartus Prime Archive log --	C:/DESCOMP/MIPS_PIPELINE/MipsPipeline.qarlog
+
+Archive:	C:/DESCOMP/MIPS_PIPELINE/MipsPipeline.qar
+Date:		Sun Jun 02 20:45:27 2024
+Quartus Prime		20.1.0 Build 711 06/05/2020 SJ Lite Edition
+
+	=========== Files Selected: ===========
+C:/DESCOMP/MIPS_PIPELINE/EXEC_Pipeline.vhd
+C:/DESCOMP/MIPS_PIPELINE/ID_Pipeline.vhd
+C:/DESCOMP/MIPS_PIPELINE/IF_Pipeline.vhd
+C:/DESCOMP/MIPS_PIPELINE/MEM_Pipeline.vhd
+C:/DESCOMP/MIPS_PIPELINE/MipsPipeline.qpf
+C:/DESCOMP/MIPS_PIPELINE/MipsPipeline.qsf
+C:/DESCOMP/MIPS_PIPELINE/MipsPipeline.vhd
+C:/DESCOMP/MIPS_PIPELINE/RAMMIPS.vhd
+C:/DESCOMP/MIPS_PIPELINE/ROMMIPS.vhd
+C:/DESCOMP/MIPS_PIPELINE/ROMMIPS_content.mif
+C:/DESCOMP/MIPS_PIPELINE/ULAMIPS.vhd
+C:/DESCOMP/MIPS_PIPELINE/ULAMIPS1bit.vhd
+C:/DESCOMP/MIPS_PIPELINE/ULAMIPSbit31.vhd
+C:/DESCOMP/MIPS_PIPELINE/ULActrl.vhd
+C:/DESCOMP/MIPS_PIPELINE/UnidadeControle.vhd
+C:/DESCOMP/MIPS_PIPELINE/WB_Pipeline.vhd
+C:/DESCOMP/MIPS_PIPELINE/bancoReg.vhd
+C:/DESCOMP/MIPS_PIPELINE/concatenaJMP.vhd
+C:/DESCOMP/MIPS_PIPELINE/conversorHex7Seg.vhd
+C:/DESCOMP/MIPS_PIPELINE/db/MipsPipeline.cmp.rdb
+C:/DESCOMP/MIPS_PIPELINE/edgeDetector.vhd
+C:/DESCOMP/MIPS_PIPELINE/estendeLUI.vhd
+C:/DESCOMP/MIPS_PIPELINE/estendeSinalGenerico.vhd
+C:/DESCOMP/MIPS_PIPELINE/muxGenerico2x1.vhd
+C:/DESCOMP/MIPS_PIPELINE/muxGenerico2x1bit.vhd
+C:/DESCOMP/MIPS_PIPELINE/muxGenerico4x1.vhd
+C:/DESCOMP/MIPS_PIPELINE/muxGenerico4x1bit.vhd
+C:/DESCOMP/MIPS_PIPELINE/operadorAND.vhd
+C:/DESCOMP/MIPS_PIPELINE/operadorAND2x1.vhd
+C:/DESCOMP/MIPS_PIPELINE/operadorNOT.vhd
+C:/DESCOMP/MIPS_PIPELINE/operadorOR.vhd
+C:/DESCOMP/MIPS_PIPELINE/operadorXOR.vhd
+C:/DESCOMP/MIPS_PIPELINE/registradorGenerico.vhd
+C:/DESCOMP/MIPS_PIPELINE/registradorGenerico_EXEC_MEM.vhd
+C:/DESCOMP/MIPS_PIPELINE/registradorGenerico_ID_EXEC.vhd
+C:/DESCOMP/MIPS_PIPELINE/registradorGenerico_IF_ID.vhd
+C:/DESCOMP/MIPS_PIPELINE/registradorGenerico_MEM_WB.vhd
+C:/DESCOMP/MIPS_PIPELINE/shiftLeft2.vhd
+C:/DESCOMP/MIPS_PIPELINE/somaConstante.vhd
+C:/DESCOMP/MIPS_PIPELINE/somador1bit.vhd
+C:/DESCOMP/MIPS_PIPELINE/somadorGenerico.vhd
+c:/intelfpga_lite/20.1/quartus/bin64/assignment_defaults.qdf
+	======= Total: 42 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.

@@ -1,0 +1,277 @@
+setup:
+LDI $0, R1 #Carregando 0 no registrador 1
+STA @0, R1 #Carregando 0 na posição de memória 0
+STA @508, R1 #Limpando a leitura da base de tempo
+STA @510, R1 #Limpando a leitura de key 1
+STA @2, R1 #Zerando as unidades de segundo
+STA @3, R1 #Zerando as dezenas de segundo
+STA @4, R1 #Zerando as unidades de minuto
+STA @5, R1 #Zerando as dezenas de minuto
+STA @6, R1 #Zerando as unidades de hora
+STA @7, R1 #Zerando as dezenas de hora
+STA @23, R1 #Zerando a flag
+STA @288, R1 #Zerando o hex 0
+STA @289, R1 #Zerando o hex 1
+STA @290, R1 #Zerando o hex 2
+STA @291, R1 #Zerando o hex 3
+STA @292, R1 #Zerando o hex 4
+STA @293, R1 #Zerando o hex 5
+STA @257, R1 #Zerando o led 8
+NOP #guardando variáveis
+LDI $1, R1 #Carregando 1 no registrador 1
+STA @1, R1 #Armazenando na posição de memória 1
+LDI $2, R1 #Carregando 2 no registrador 1
+STA @32, R1 #Armazenando 2 na posição de memória 32
+LDI $3, R1 #Carregando 3 no registrador 1
+STA @33, R1 #Armazenando 3 na posição de memória 33
+LDI $4, R1 #Carregando 4 no registrador 1
+STA @34, R1 #Armazenando 4 na posição de memória 34
+LDI $5, R1 #Carregando 5 no registrador 1
+STA @35, R1 #Armazenando 5 na posição de memória 35
+LDI $6, R1 #Carregando 6 no registrador 1
+STA @36, R1 #Armazenando 6 na posição de memória 36
+LDI $9, R1 #Carregando 9 no registrador 1
+STA @9, R1 #Armazenando 9 na posição de memória 9
+LDI $10, R1 #Carregando 10 no registrador 1
+STA @10, R1 #Armazenando 10 na posição de memória 10
+LOOPPRINCIPAL:
+LOOP_LE_K1:
+LDA @353 #Lendo key1 (responsável por definir o tempo)
+AND @1 #Mascarando os bits e garantindo que o botão foi apertado
+CEQ @0 #Caso o botão não tenha sido apertado
+JEQ .LOOP_TEMPO #Pular pra LOOP_TEMPO
+JSR .DEFINEHORARIO #Caso tenha sido apertado, pular para DEFINEHORARIO
+NOP
+LOOP_TEMPO:
+LDA @357 #Lendo a base de tempo
+AND @1 #Mascarando os bits para garantir que tenha mudado
+CEQ @0 #Caso não tenha mudado
+JEQ .LOOPPRINCIPAL #Voltar para LOOPPRINCIPAL
+JSR .INCREMENTATEMPO #Caso tenha mudado, pular para INCREMENTATEMPO
+NOP
+JMP .LOOPPRINCIPAL #Volta para o LOOPPRINCIPAL
+INCREMENTATEMPO:
+STA @508 #Limpando a leitura do tempo
+checaunidadesegundo:
+LDA @2 #Carrega as unidades do segundo
+CEQ @9 #Compara com nove
+JEQ .unidadeenove #Caso seja nove, vai para a unidadeenove
+JMP .unidadenaoenove #Caso não seja nove, vai para unidadenaoenove
+unidadeenove:
+LDI $0 #Carrega zero no registrador
+STA @2 #Zera a unidade de segundo
+STA @288 #Zerando o hex 0
+JMP .checadezena #Pula para a checagem da dezena
+unidadenaoenove:
+LDA @2 #Carrega as unidades de segundo no registrador
+SOMA @1 #Soma 1
+STA @2 #Carrega o valor somado nas unidades de segundo
+STA @288 #Armazena no hex 0
+JMP .retornaincrementaTempo #Pula para o retorno
+checadezena:
+LDA @3 #Carrega as dezenas de segundo no registrador
+CEQ @35 #Compara com 5
+JEQ .dezenae5 #Caso for 5, pula pra dezenae5
+JMP .dezenanaoe5 #Caso não 5, for pula pra dezenanaoe5
+dezenae5:
+LDI $0 #Carrega zero no registrador
+STA @3 #Zera a dezena de segundo
+STA @289 #Zera o hex1
+JMP .checacentena #Vai para a checagem da centena
+dezenanaoe5:
+LDA @3 #Carrega a dezena de segundo no registrador
+SOMA @1 #Soma um
+STA @3 #Armazena o novo valor na dezena de segundo
+STA @289 #Carrega o valor no HEX1
+JMP .retornaincrementaTempo #Vai para o retorno
+checacentena:
+LDA @4 #Carrega a unidade de minuto no registrador
+CEQ @9 #Caso seja 9
+JEQ .centenae9 #Vai para centenae9
+JMP .centenanaoe9 #Caso não seja, vai para centenanaoe9
+centenae9:
+LDI $0 #Carrega zero no registrador
+STA @4 #Zera a unidade de minuto
+STA @290 #Zera o HEX2
+JMP .checamilhar #Vai para a checagem da dezena de minuto
+centenanaoe9:
+LDA @4 #Carrega unidade de minuto
+SOMA @1 #Soma 1
+STA @4  #Armazena o novo valor na memória
+STA @290 #Carrega o valor no hex2
+JMP .retornaincrementaTempo #Vai para o retorno
+checamilhar:
+LDA @5 #Carrega a dezena de minuto no registrador
+CEQ @35 #Caso seja igual as 5
+JEQ .milhare5 #Pula para milhare5
+JMP .milharnaoe5 #Caso não seja 5, pula para milharnaoe5
+milhare5:
+LDI $0 #Carrega 0 no registrador
+STA @5 #Zera a dezena de minuto
+STA @291 #Carrega o zero no hex3
+JMP .checadzmilhar #Vai para a checagem da dezena de hora
+milharnaoe5:
+LDA @5 #Carrega a dezena de minuto no registrador
+SOMA @1 #Soma 1
+STA @5 #Carrega o novo valor na memória
+STA @291 #Carrega o novo valor no hex3
+JMP .retornaincrementaTempo #Vai para o retorno
+checadzmilhar:
+LDA @7 #Carrega a dezena de hora
+CLT @32 #Caso for menor que dois
+JLT .aindanaoe2 #Pula para aindanaoe2
+JMP .jae2 #Caso for dois, pula para jae2
+aindanaoe2:
+LDA @6 #Carrega a unidade de hora no registrador
+CEQ @9 #Caso for igual a 9
+JEQ .dzmilhare9ou3 #Pula para dzmilhare9ou3
+JMP .dzmilharnaoe9ou3 #Caso não for, pula para dzmilharnaoe9ou3
+jae2:
+LDA @6 #Carrega a unidade de hora no registrador
+CEQ @33 #Caso for igual a 3
+JEQ .dzmilhare9ou3 #Pula para dzmilhare9ou3
+JMP .dzmilharnaoe9ou3 #Caso não seja, muda pra dzmilharnaoe9ou3
+dzmilhare9ou3:
+LDI $0 #Carrega 0 no registrador
+STA @6 #Armazena 0 na unidade de hora
+STA @292 #Zera o hex 4
+JMP .checactmilhar #Pula pro checactmilhar
+dzmilharnaoe9ou3:
+LDA @6 #Carrega a unidade de hora no registrador
+SOMA @1 #Soma 1
+STA @6 #Armazena na unidade de hora
+STA @292 #Coloca o valor no hex 4
+JMP .retornaincrementaTempo #Pula pro retorno
+checactmilhar:
+LDA @7 #Carrega a dezena de hora no registrador
+CEQ @32 #Caso seja igual a 2
+JEQ .ctmilhare2 #Pula para ctmilhare2
+JMP .ctmillharnaoe2 #Caso não seja, pula para ctmillharnaoe2
+ctmilhare2:
+LDI $0 #Carrega 0 no registrador
+STA @7  #Armazena na dezena de hora
+STA @293 #Carrega o valor no HEX5
+JMP .retornaincrementaTempo #Pula pro retorno
+ctmillharnaoe2:
+LDA @7 #Carrega a dezena de hora no registrador
+SOMA @1 #Soma 1
+STA @7 #Armazena na dezena de hora
+STA @293 #Altera o hex 5
+JMP .retornaincrementaTempo #Vai para o retorno
+retornaincrementaTempo:
+RET #retornando da subrotina de incrementar o tempo
+DEFINEHORARIO:
+STA @510 #limpa leitura de KEY1
+LDI $1 #Carregando 1 no registrador
+STA @257 #Acendendo o LED8
+LDI $0 #Carregando 0 no registrador
+STA @288 #Zerando o hex 0
+STA @289 #Zerando o hex 1
+STA @290 #Zerando o hex 2
+STA @291 #Zerando o hex 3
+STA @292 #Zerando o hex 4
+STA @293 #Zerando o hex 5
+defineunidadedossegundos:
+LDA @320 #Le os valores das chaves
+CLT @10 #Caso for menor que 10
+JLT .ESCREVEUS #Pula para ESCREVEUS
+JMP .defineunidadedossegundos #Caso não for, pula para defineunidadedossegundos (aguarda um valor menor que 10)
+NOP
+ESCREVEUS:
+STA @2 #Escreve o valor na unidade dos segundos
+STA @288 #Carrega o valor no hex0
+LEITURAKEY1_DS:
+LDA @353 #Le KEY1
+AND @1 #Mascara os bits e confirma se o botão foi realmente apertado
+CEQ @0 #Caso não tenha sido apertado
+JEQ .LEITURAKEY1_DS #Volta para LEITURAKEY1_DS, esperando key1 ser apertado
+STA @510 #Limpa a leitura de key1
+NOP
+definedezenadossegundos:
+LDA @320 #Le valores das chaves
+CLT @36 #Caso for menor que 6
+JLT .ESCREVEDS #Vai para ESCREVEDS
+JMP .definedezenadossegundos #Caso não for menor, vai para definedezenadossegundos (aguarda um valor menor que 6)
+NOP
+ESCREVEDS:
+STA @3 #Escreve o valor na dezena dos segundos
+STA @289 #Carrega no hex1
+LEITURAKEY1_UM:
+LDA @353 #Le KEY1
+AND @1 #Mascara os bits para garantir que foi apertado
+CEQ @0 #Caso não tenha sido apertado
+JEQ .LEITURAKEY1_UM #Vai para LEITURAKEY1_UM, esperando apertar o botão
+STA @510 #Limpa a leiura de key1
+NOP
+defineunidadedosminutos:
+LDA @320 #Le valores das chaves
+CLT @10 #Caso for menor que 10
+JLT .ESCREVEUM #Vai para ESCREVEUM
+JMP .defineunidadedosminutos #Caso não for menor, vai para defineunidadedosminutos (aguarda um valor menor que 10)
+NOP
+ESCREVEUM:
+STA @4 #Escreve o valor na dezena dos segundos
+STA @290 #Armazena no hex2
+NOP
+LEITURAKEY1_DM:
+LDA @353 #Le KEY1
+AND @1 #Mascara os bits garantindo que foi apertado
+CEQ @0 #Caso não tenha sido apertado
+JEQ .LEITURAKEY1_DM #Vai para LEITURAKEY1_DM, esperando apertar o botão
+STA @510 #Limpa a leitura de key1
+NOP
+definedezenadosminutos:
+LDA @320 #Le valores das chaves
+CLT @36 #Caso for menor que 6
+JLT .ESCREVEDM #Vai para ESCREVEDM
+JMP .definedezenadosminutos #Caso não for menor, vai para definedezenadosminutos (aguarda um valor menor que 6)
+NOP
+ESCREVEDM:
+STA @5 #Escreve o valor na dezena dos segundos
+STA @291 #Armazena no hex 3
+NOP
+LEITURAKEY1_UH:
+LDA @353 #Le KEY1
+AND @1 #Mascara os bits, garantindo que foi apertado
+CEQ @0 #Caso não tenha sido apertado
+JEQ .LEITURAKEY1_UH #Vai para LEITURAKEY1_UH, esperando apertarkey1
+STA @510 #Limpa a leitura de key 1
+NOP
+defineunidadedashoras:
+LDA @320 #Le os valores das chaves
+CLT @10 #Caso for menor que 10
+JLT .ESCREVEUH #Vai para ESCREVEUH
+JMP .defineunidadedashoras #Caso não for, vai para defineunidadedashoras (aguarda um valor menor que 10)
+NOP
+ESCREVEUH:
+STA @6 #Armazena o valor na dezena dos segundos
+STA @292 #Escreve o valor no hex 4
+NOP
+LEITURAKEY1_DH:
+LDA @353 #Le KEY1
+AND @1 #Mascara os bits garantindo que foi apertado
+CEQ @0 #Caso não tenha sido apertado
+JEQ .LEITURAKEY1_DH #Vai para para LEITURAKEY1_DH
+STA @510 #Limpa a leitura de key 1
+NOP
+definedezenadashoras:
+LDA @6 #Carrega a unidade de hora no registrador
+CLT @34 #Caso for menor que 4
+JLT .MENORQUE4 #Vai para MENORQUE4
+JMP .MAIORQUE4 #Caso não for menor que 4, vai para MAIORQUE4
+MENORQUE4:
+LDA @320 #Le os valores das chaves
+CLT @33 #Caso for menor que 3
+JLT .ESCREVEDH #Vai para ESCREVEDH
+JMP .MENORQUE4 #Caso não for, vai para MENORQUE4 (espera um valor menor que 3)
+NOP
+MAIORQUE4:
+LDA @320 #Le os valores das chaves
+CLT @32 #Caso for menor que 2
+JLT .ESCREVEDH #Vai para ESCREVEDH
+JMP .MAIORQUE4 #Caso não for menor, vai para MAIORQUE4 (aguarda um valor menor que 2)
+NOP
+ESCREVEDH:
+STA @7 #Escreve o valor na dezena das horas
+STA @293 #Carrega no HEX 5
+RET #Retorna da subrotina

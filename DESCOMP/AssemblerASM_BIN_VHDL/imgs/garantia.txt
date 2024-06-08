@@ -1,0 +1,248 @@
+setup:
+LDI $0
+STA @0
+STA @508
+STA @510
+STA @2
+STA @3
+STA @4
+STA @5
+STA @6
+STA @7
+STA @23
+STA @288
+STA @289
+STA @290
+STA @291
+STA @292
+STA @293
+STA @257
+NOP #guardando variáveis
+LDI $1
+STA @1
+LDI $2
+STA @32
+LDI $3
+STA @33
+LDI $4
+STA @34
+LDI $5
+STA @35
+LDI $6
+STA @36
+LDI $9
+STA @9
+LDI $10
+STA @10
+LOOPPRINCIPAL:
+LOOP_LE_K1:
+LDA @353
+CEQ @0
+JEQ .LOOP_TEMPO
+JSR .DEFINEHORARIO
+NOP
+LOOP_TEMPO:
+LDA @357
+CEQ @0
+JMP .LOOPPRINCIPAL
+JSR .INCREMENTATEMPO
+NOP
+JMP .LOOPPRINCIPAL
+INCREMENTATEMPO:
+checaunidadesegundo:
+LDA @2 #carrega as unidades do segundo
+CEQ @9 #compara com nove
+JEQ .unidadeenove #caso seja nove, vai para a unidadeenove
+JMP .unidadenaoenove #caso não seja nove, vai para unidadenaoenove
+unidadeenove:
+LDI $0 #carrega zero no registrador
+STA @2 #zera a unidade de segundo
+STA @288 #zerando o hex 0
+JMP .checadezena
+unidadenaoenove:
+LDA @2 #carrega as unidades de segundo no registrador
+SOMA @1 #soma 1
+STA @2 #carrega o valor somado nas unidades de segundo
+STA @288 #armazena no hex 0
+JMP .retornaincrementaTempo
+checadezena:
+LDA @3 #carrega as dezenas de segundo no registrador
+CEQ @35 #compara com 5
+JEQ .dezenae5 #caso for pula pra dezenae5
+JMP .dezenanaoe5 #caso nao for pula pra dezenanaoe5
+dezenae5:
+LDI $0 #carrega zero no registrador
+STA @3 #zera a dezena de segundo
+STA @289 #zera o hex1
+JMP .checacentena #vai para o retorno
+dezenanaoe5:
+LDA @3 #carrega a dezena de segundo no registrador
+SOMA @1 #soma um
+STA @3 #armazena o novo valor na dezena de segundo
+STA @289 #carrega o valor no HEX1
+JMP .retornaincrementaTempo #vai para o retorno
+checacentena:
+LDA @4
+CEQ @9
+JEQ .centenae9
+JMP .centenanaoe9
+centenae9:
+LDI $0 #carrega zero no registrador
+STA @4 #zera a unidade de minuto
+STA @290 #zera o HEX2
+JMP .checamilhar
+centenanaoe9:
+LDA @4 #carrega unidade de minuto
+SOMA @1 #soma 1
+STA @4  #armazena o novo valor na memória
+STA @290 #carrega o valor no hex2
+JMP .retornaincrementaTempo
+checamilhar:
+LDA @5 #carrega a dezena de minuto no registrador
+CEQ @35 #compara com 5
+JEQ .milhare5 #caso seja 5 pula para milhare5
+JMP .milharnaoe5 #caso não seja 5, pula para milharnaoe5
+milhare5:
+LDI $0 #carrega 0 no registrador
+STA @5 #zera a dezena de minuto
+STA @291 #carrega o zero no hex3
+JMP .checadzmilhar #vai para o retorno
+milharnaoe5:
+LDA @5 #carrega a dezena de minuto no registrador
+SOMA @1 #soma 1
+STA @5 #carrega o novo valor na memória
+STA @291 #carrega o novo valor no hex3
+JMP .retornaincrementaTempo #jump pro retorno
+checadzmilhar:
+LDA @6 #carrega a unidade de hora no registrador
+CEQ @33 #compara com 3
+JEQ .dzmilhare3 #caso seja 3, pula ora dzmilhare3
+JMP .dzmilharnaoe3 #caso não seja, muda pra dzmilharnaoe3
+dzmilhare3:
+LDI $0 #carrega 0 no registrador
+STA @6 #armazena 0 na memória
+STA @292 #zero no hex 4
+JMP .checactmilhar #pula pro retorno
+dzmilharnaoe3:
+LDA @6 #carrega a unidade de hora no registrador
+SOMA @1 #soma 1
+STA @6 #armazena na memória
+STA @292 #coloca no hex 4
+JMP .retornaincrementaTempo #pula pro retorno
+checactmilhar:
+LDA @7 #carrega a dezena de hora no registrador
+CEQ @32 #compara com 2
+JEQ .ctmilhare2 #pula caso seja 2
+JMP .ctmillharnaoe2 #pula caso nao seja
+ctmilhare2:
+LDI $0 #carrega 0 no registrador
+STA @7  #armazena na memória
+STA @293 #carrega no hex5
+JMP .retornaincrementaTempo #pula pro retorno
+ctmillharnaoe2:
+LDA @7 #carrega a dezena de hora no registrador
+SOMA @1 #soma 1
+STA @7 #armazena na memória
+STA @293 #altera o hex 5
+JMP .retornaincrementaTempo #vai pro retorno
+retornaincrementaTempo:
+RET #retornando da subrotina de incrementar o tempo
+DEFINEHORARIO:
+LDI $1
+STA @257 #ACENDENDO LED
+LDI $0
+STA @288
+STA @289
+STA @290
+STA @291
+STA @292
+STA @293
+STA @510 #limpa leitura de KEY1
+defineunidadedossegundos:
+LDA @320 #le valores das chaves
+CLT @10 #ve se é menor que 10
+JLT .ESCREVEUS #se for maior volta para leitura até ser menor
+JMP .defineunidadedossegundos
+NOP
+ESCREVEUS:
+STA @2 #se o valor estiver correto escreve ele na unidade dos segundos
+STA @288
+LEITURAKEY1_DS:
+LDA @353 #le KEY1
+CEQ @0 #ompara com 0
+JEQ .LEITURAKEY1_DS #volta para LEITURAKEY1_DS ate apertar KEY1
+STA @510
+NOP
+definedezenadossegundos:
+LDA @320 #le valores das chaves
+CLT @36 #ve se é menor que 6
+JLT .ESCREVEDS #se for maior volta para leitura até ser menor
+JMP .definedezenadossegundos
+NOP
+ESCREVEDS:
+STA @3 #se o valor estiver correto escreve ele na dezena dos segundos
+STA @289
+LEITURAKEY1_UM:
+LDA @353 #le KEY1
+CEQ @0 #compara com 0
+JEQ .LEITURAKEY1_UM #volta para LEITURAKEY1_UM ate apertar KEY1
+STA @510
+NOP
+defineunidadedosminutos:
+LDA @320 #le valores das chaves
+CLT @10 #ve se é menor que 10
+JLT .ESCREVEUM #se for maior volta para leitura até ser menor
+JMP .defineunidadedosminutos
+NOP
+ESCREVEUM:
+STA @4 #se o valor estiver correto escreve ele na dezena dos segundos
+STA @290
+NOP
+LEITURAKEY1_DM:
+LDA @353 #le KEY1
+CEQ @0 #compara com 0
+JEQ .LEITURAKEY1_DM #volta para LEITURAKEY1_DM ate apertar KEY1
+STA @510
+NOP
+definedezenadosminutos:
+LDA @320 #le valores das chaves
+CLT @36 #ve se é menor que 6
+JLT .ESCREVEDM #se for maior volta para leitura até ser menor
+JMP .definedezenadosminutos
+NOP
+ESCREVEDM:
+STA @5 #se o valor estiver correto escreve ele na dezena dos segundos
+STA @291
+NOP
+LEITURAKEY1_UH:
+LDA @353 #le KEY1
+CEQ @0 #compara com 0
+JEQ .LEITURAKEY1_UH #volta para LEITURAKEY1_UH ate apertar KEY1
+STA @510
+NOP
+defineunidadedashoras:
+LDA @320 #le valores das chaves
+CLT @34 #ve se é menor que 6
+JLT .ESCREVEUH #se for maior volta para leitura até ser menor
+JMP .defineunidadedashoras
+NOP
+ESCREVEUH:
+STA @6 #se o valor estiver correto escreve ele na dezena dos segundos
+STA @292
+NOP
+LEITURAKEY1_DH:
+LDA @353 #le KEY1
+CEQ @0 #compara com 0
+JEQ .LEITURAKEY1_DH #volta para LEITURAKEY1_DH ate apertar KEY1
+STA @510
+NOP
+definedezenadashoras:
+LDA @320 #le valores das chaves
+CLT @33 #ve se é menor que 3
+JLT .ESCREVEDH #se for maior volta para leitura até ser menor
+JMP .definedezenadashoras
+NOP
+ESCREVEDH:
+STA @7 #se o valor estiver correto escreve ele na dezena dos segundos
+STA @293
+RET

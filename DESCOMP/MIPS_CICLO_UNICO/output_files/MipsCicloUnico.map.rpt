@@ -1,0 +1,1592 @@
+Analysis & Synthesis report for MipsCicloUnico
+Sat May 18 14:39:11 2024
+Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Registers Removed During Synthesis
+  9. General Register Statistics
+ 10. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 11. Parameter Settings for User Entity Instance: Top-level Entity: |MipsCicloUnico
+ 12. Parameter Settings for User Entity Instance: registradorGenerico:PC
+ 13. Parameter Settings for User Entity Instance: somaConstante:incrementaPC
+ 14. Parameter Settings for User Entity Instance: ROMMIPS:ROM
+ 15. Parameter Settings for User Entity Instance: ULActrl:Controle_ULA1|muxGenerico2x1:Mux_Rt_Rd
+ 16. Parameter Settings for User Entity Instance: muxGenerico4x1:Mux_Rt_Rd_31
+ 17. Parameter Settings for User Entity Instance: bancoReg:bancoRegs
+ 18. Parameter Settings for User Entity Instance: muxGenerico2x1:Mux_Rt_Imediato
+ 19. Parameter Settings for User Entity Instance: ULAMIPS:ULA
+ 20. Parameter Settings for User Entity Instance: RAMMIPS:RAM
+ 21. Parameter Settings for User Entity Instance: estendeSinalGenerico:estendeSinal
+ 22. Parameter Settings for User Entity Instance: estendeLUI:estendeLUI1
+ 23. Parameter Settings for User Entity Instance: muxGenerico4x1:Mux_ULA_RAM_LUI
+ 24. Parameter Settings for User Entity Instance: somadorGenerico:somadorBrAdd
+ 25. Parameter Settings for User Entity Instance: muxGenerico2x1:muxBEQPC4
+ 26. Parameter Settings for User Entity Instance: muxGenerico2x1:muxDesvio
+ 27. Parameter Settings for User Entity Instance: muxGenerico2x1:muxJR
+ 28. Parameter Settings for User Entity Instance: muxGenerico2x1:muxPlaca
+ 29. Port Connectivity Checks: "conversorHex7Seg:Decod7seg_HEX5"
+ 30. Port Connectivity Checks: "conversorHex7Seg:Decod7seg_HEX4"
+ 31. Port Connectivity Checks: "conversorHex7Seg:Decod7seg_HEX3"
+ 32. Port Connectivity Checks: "conversorHex7Seg:Decod7seg_HEX2"
+ 33. Port Connectivity Checks: "conversorHex7Seg:Decod7seg_HEX1"
+ 34. Port Connectivity Checks: "conversorHex7Seg:Decod7seg_HEX0"
+ 35. Port Connectivity Checks: "estendeSinalGenerico:estendeSinal|muxGenerico2x1bit:MUX_ORI"
+ 36. Port Connectivity Checks: "RAMMIPS:RAM"
+ 37. Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPSbit31:BIT31"
+ 38. Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT30"
+ 39. Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT29"
+ 40. Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT28"
+ 41. Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT27"
+ 42. Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT26"
+ 43. Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT25"
+ 44. Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT24"
+ 45. Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT23"
+ 46. Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT22"
+ 47. Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT21"
+ 48. Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT20"
+ 49. Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT19"
+ 50. Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT18"
+ 51. Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT17"
+ 52. Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT16"
+ 53. Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT15"
+ 54. Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT14"
+ 55. Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT13"
+ 56. Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT12"
+ 57. Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT11"
+ 58. Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT10"
+ 59. Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT9"
+ 60. Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT8"
+ 61. Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT7"
+ 62. Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT6"
+ 63. Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT5"
+ 64. Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT4"
+ 65. Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT3"
+ 66. Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT2"
+ 67. Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT1"
+ 68. Port Connectivity Checks: "muxGenerico4x1:Mux_Rt_Rd_31"
+ 69. Port Connectivity Checks: "registradorGenerico:PC"
+ 70. Post-Synthesis Netlist Statistics for Top Partition
+ 71. Elapsed Time Per Partition
+ 72. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Sat May 18 14:39:11 2024       ;
+; Quartus Prime Version           ; 20.1.0 Build 711 06/05/2020 SJ Lite Edition ;
+; Revision Name                   ; MipsCicloUnico                              ;
+; Top-level Entity Name           ; MipsCicloUnico                              ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 2849                                        ;
+; Total pins                      ; 67                                          ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 0                                           ;
+; Total DSP Blocks                ; 0                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CEBA4F23C7        ;                    ;
+; Top-level entity name                                                           ; MipsCicloUnico     ; MipsCicloUnico     ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Maximum processors allowed for parallel compilation                             ; All                ;                    ;
+; VHDL Show LMF Mapping Messages                                                  ; Off                ;                    ;
+; VHDL Version                                                                    ; VHDL_2008          ; VHDL_1993          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
++----------------------------+-------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                ;
++----------------------------------+-----------------+-----------------+------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                         ; Library ;
++----------------------------------+-----------------+-----------------+------------------------------------------------------+---------+
+; ROMMIPS.vhd                      ; yes             ; User VHDL File  ; C:/DESCOMP/MIPS_CICLO_UNICO/ROMMIPS.vhd              ;         ;
+; ULAMIPSbit31.vhd                 ; yes             ; User VHDL File  ; C:/DESCOMP/MIPS_CICLO_UNICO/ULAMIPSbit31.vhd         ;         ;
+; ULAMIPS1bit.vhd                  ; yes             ; User VHDL File  ; C:/DESCOMP/MIPS_CICLO_UNICO/ULAMIPS1bit.vhd          ;         ;
+; ULAMIPS.vhd                      ; yes             ; User VHDL File  ; C:/DESCOMP/MIPS_CICLO_UNICO/ULAMIPS.vhd              ;         ;
+; somadorGenerico.vhd              ; yes             ; User VHDL File  ; C:/DESCOMP/MIPS_CICLO_UNICO/somadorGenerico.vhd      ;         ;
+; somador1bit.vhd                  ; yes             ; User VHDL File  ; C:/DESCOMP/MIPS_CICLO_UNICO/somador1bit.vhd          ;         ;
+; somaConstante.vhd                ; yes             ; User VHDL File  ; C:/DESCOMP/MIPS_CICLO_UNICO/somaConstante.vhd        ;         ;
+; shiftLeft2.vhd                   ; yes             ; User VHDL File  ; C:/DESCOMP/MIPS_CICLO_UNICO/shiftLeft2.vhd           ;         ;
+; registradorGenerico.vhd          ; yes             ; User VHDL File  ; C:/DESCOMP/MIPS_CICLO_UNICO/registradorGenerico.vhd  ;         ;
+; RAMMIPS.vhd                      ; yes             ; User VHDL File  ; C:/DESCOMP/MIPS_CICLO_UNICO/RAMMIPS.vhd              ;         ;
+; operadorXOR.vhd                  ; yes             ; User VHDL File  ; C:/DESCOMP/MIPS_CICLO_UNICO/operadorXOR.vhd          ;         ;
+; operadorOR.vhd                   ; yes             ; User VHDL File  ; C:/DESCOMP/MIPS_CICLO_UNICO/operadorOR.vhd           ;         ;
+; operadorNOT.vhd                  ; yes             ; User VHDL File  ; C:/DESCOMP/MIPS_CICLO_UNICO/operadorNOT.vhd          ;         ;
+; operadorAND2x1.vhd               ; yes             ; User VHDL File  ; C:/DESCOMP/MIPS_CICLO_UNICO/operadorAND2x1.vhd       ;         ;
+; operadorAND.vhd                  ; yes             ; User VHDL File  ; C:/DESCOMP/MIPS_CICLO_UNICO/operadorAND.vhd          ;         ;
+; muxGenerico4x1.vhd               ; yes             ; User VHDL File  ; C:/DESCOMP/MIPS_CICLO_UNICO/muxGenerico4x1.vhd       ;         ;
+; muxGenerico2x1.vhd               ; yes             ; User VHDL File  ; C:/DESCOMP/MIPS_CICLO_UNICO/muxGenerico2x1.vhd       ;         ;
+; MipsCicloUnico.vhd               ; yes             ; User VHDL File  ; C:/DESCOMP/MIPS_CICLO_UNICO/MipsCicloUnico.vhd       ;         ;
+; estendeSinalGenerico.vhd         ; yes             ; User VHDL File  ; C:/DESCOMP/MIPS_CICLO_UNICO/estendeSinalGenerico.vhd ;         ;
+; edgeDetector.vhd                 ; yes             ; User VHDL File  ; C:/DESCOMP/MIPS_CICLO_UNICO/edgeDetector.vhd         ;         ;
+; concatenaJMP.vhd                 ; yes             ; User VHDL File  ; C:/DESCOMP/MIPS_CICLO_UNICO/concatenaJMP.vhd         ;         ;
+; bancoReg.vhd                     ; yes             ; User VHDL File  ; C:/DESCOMP/MIPS_CICLO_UNICO/bancoReg.vhd             ;         ;
+; muxGenerico2x1bit.vhd            ; yes             ; User VHDL File  ; C:/DESCOMP/MIPS_CICLO_UNICO/muxGenerico2x1bit.vhd    ;         ;
+; ULActrl.vhd                      ; yes             ; User VHDL File  ; C:/DESCOMP/MIPS_CICLO_UNICO/ULActrl.vhd              ;         ;
+; UnidadeControle.vhd              ; yes             ; User VHDL File  ; C:/DESCOMP/MIPS_CICLO_UNICO/UnidadeControle.vhd      ;         ;
+; conversorHex7Seg.vhd             ; yes             ; User VHDL File  ; C:/DESCOMP/MIPS_CICLO_UNICO/conversorHex7Seg.vhd     ;         ;
+; muxGenerico4x1bit.vhd            ; yes             ; User VHDL File  ; C:/DESCOMP/MIPS_CICLO_UNICO/muxGenerico4x1bit.vhd    ;         ;
+; estendeLUI.vhd                   ; yes             ; User VHDL File  ; C:/DESCOMP/MIPS_CICLO_UNICO/estendeLUI.vhd           ;         ;
++----------------------------------+-----------------+-----------------+------------------------------------------------------+---------+
+
+
++---------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                           ;
++---------------------------------------------+-----------------------------------------+
+; Resource                                    ; Usage                                   ;
++---------------------------------------------+-----------------------------------------+
+; Estimate of Logic utilization (ALMs needed) ; 2231                                    ;
+;                                             ;                                         ;
+; Combinational ALUT usage for logic          ; 1791                                    ;
+;     -- 7 input functions                    ; 194                                     ;
+;     -- 6 input functions                    ; 1086                                    ;
+;     -- 5 input functions                    ; 78                                      ;
+;     -- 4 input functions                    ; 88                                      ;
+;     -- <=3 input functions                  ; 345                                     ;
+;                                             ;                                         ;
+; Dedicated logic registers                   ; 2849                                    ;
+;                                             ;                                         ;
+; I/O pins                                    ; 67                                      ;
+;                                             ;                                         ;
+; Total DSP Blocks                            ; 0                                       ;
+;                                             ;                                         ;
+; Maximum fan-out node                        ; edgeDetector:\gravar:detectorSub0|saida ;
+; Maximum fan-out                             ; 2848                                    ;
+; Total fan-out                               ; 18008                                   ;
+; Average fan-out                             ; 3.77                                    ;
++---------------------------------------------+-----------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                         ;
++-----------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------+---------------------+--------------+
+; Compilation Hierarchy Node              ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                 ; Entity Name         ; Library Name ;
++-----------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------+---------------------+--------------+
+; |MipsCicloUnico                         ; 1791 (0)            ; 2849 (0)                  ; 0                 ; 0          ; 67   ; 0            ; |MipsCicloUnico                                                                     ; MipsCicloUnico      ; work         ;
+;    |RAMMIPS:RAM|                        ; 800 (800)           ; 2048 (2048)               ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|RAMMIPS:RAM                                                         ; RAMMIPS             ; work         ;
+;    |ROMMIPS:ROM|                        ; 30 (30)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ROMMIPS:ROM                                                         ; ROMMIPS             ; work         ;
+;    |ULAMIPS:ULA|                        ; 151 (8)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA                                                         ; ULAMIPS             ; work         ;
+;       |ULAMIPS1bit:BIT0|                ; 6 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT0                                        ; ULAMIPS1bit         ; work         ;
+;          |muxGenerico2x1bit:MUX_SUB|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT0|muxGenerico2x1bit:MUX_SUB              ; muxGenerico2x1bit   ; work         ;
+;          |muxGenerico4x1bit:MUX_ULAout| ; 4 (4)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT0|muxGenerico4x1bit:MUX_ULAout           ; muxGenerico4x1bit   ; work         ;
+;          |somador1bit:SOMADOR|          ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT0|somador1bit:SOMADOR                    ; somador1bit         ; work         ;
+;             |operadorOR:OR1|            ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT0|somador1bit:SOMADOR|operadorOR:OR1     ; operadorOR          ; work         ;
+;       |ULAMIPS1bit:BIT10|               ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT10                                       ; ULAMIPS1bit         ; work         ;
+;          |muxGenerico2x1bit:MUX_SUB|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT10|muxGenerico2x1bit:MUX_SUB             ; muxGenerico2x1bit   ; work         ;
+;          |muxGenerico4x1bit:MUX_ULAout| ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT10|muxGenerico4x1bit:MUX_ULAout          ; muxGenerico4x1bit   ; work         ;
+;       |ULAMIPS1bit:BIT11|               ; 7 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT11                                       ; ULAMIPS1bit         ; work         ;
+;          |muxGenerico2x1bit:MUX_SUB|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT11|muxGenerico2x1bit:MUX_SUB             ; muxGenerico2x1bit   ; work         ;
+;          |muxGenerico4x1bit:MUX_ULAout| ; 4 (4)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT11|muxGenerico4x1bit:MUX_ULAout          ; muxGenerico4x1bit   ; work         ;
+;          |somador1bit:SOMADOR|          ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT11|somador1bit:SOMADOR                   ; somador1bit         ; work         ;
+;             |operadorOR:OR1|            ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT11|somador1bit:SOMADOR|operadorOR:OR1    ; operadorOR          ; work         ;
+;             |operadorXOR:XOR1|          ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT11|somador1bit:SOMADOR|operadorXOR:XOR1  ; operadorXOR         ; work         ;
+;       |ULAMIPS1bit:BIT12|               ; 4 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT12                                       ; ULAMIPS1bit         ; work         ;
+;          |muxGenerico2x1bit:MUX_SUB|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT12|muxGenerico2x1bit:MUX_SUB             ; muxGenerico2x1bit   ; work         ;
+;          |muxGenerico4x1bit:MUX_ULAout| ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT12|muxGenerico4x1bit:MUX_ULAout          ; muxGenerico4x1bit   ; work         ;
+;          |somador1bit:SOMADOR|          ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT12|somador1bit:SOMADOR                   ; somador1bit         ; work         ;
+;             |operadorXOR:XOR1|          ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT12|somador1bit:SOMADOR|operadorXOR:XOR1  ; operadorXOR         ; work         ;
+;       |ULAMIPS1bit:BIT13|               ; 5 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT13                                       ; ULAMIPS1bit         ; work         ;
+;          |muxGenerico2x1bit:MUX_SUB|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT13|muxGenerico2x1bit:MUX_SUB             ; muxGenerico2x1bit   ; work         ;
+;          |muxGenerico4x1bit:MUX_ULAout| ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT13|muxGenerico4x1bit:MUX_ULAout          ; muxGenerico4x1bit   ; work         ;
+;          |somador1bit:SOMADOR|          ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT13|somador1bit:SOMADOR                   ; somador1bit         ; work         ;
+;             |operadorOR:OR1|            ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT13|somador1bit:SOMADOR|operadorOR:OR1    ; operadorOR          ; work         ;
+;       |ULAMIPS1bit:BIT14|               ; 5 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT14                                       ; ULAMIPS1bit         ; work         ;
+;          |muxGenerico2x1bit:MUX_SUB|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT14|muxGenerico2x1bit:MUX_SUB             ; muxGenerico2x1bit   ; work         ;
+;          |muxGenerico4x1bit:MUX_ULAout| ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT14|muxGenerico4x1bit:MUX_ULAout          ; muxGenerico4x1bit   ; work         ;
+;          |somador1bit:SOMADOR|          ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT14|somador1bit:SOMADOR                   ; somador1bit         ; work         ;
+;             |operadorAND:AND2|          ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT14|somador1bit:SOMADOR|operadorAND:AND2  ; operadorAND         ; work         ;
+;             |operadorXOR:XOR1|          ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT14|somador1bit:SOMADOR|operadorXOR:XOR1  ; operadorXOR         ; work         ;
+;       |ULAMIPS1bit:BIT15|               ; 3 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT15                                       ; ULAMIPS1bit         ; work         ;
+;          |muxGenerico2x1bit:MUX_SUB|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT15|muxGenerico2x1bit:MUX_SUB             ; muxGenerico2x1bit   ; work         ;
+;          |muxGenerico4x1bit:MUX_ULAout| ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT15|muxGenerico4x1bit:MUX_ULAout          ; muxGenerico4x1bit   ; work         ;
+;          |somador1bit:SOMADOR|          ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT15|somador1bit:SOMADOR                   ; somador1bit         ; work         ;
+;             |operadorOR:OR1|            ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT15|somador1bit:SOMADOR|operadorOR:OR1    ; operadorOR          ; work         ;
+;       |ULAMIPS1bit:BIT16|               ; 5 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT16                                       ; ULAMIPS1bit         ; work         ;
+;          |muxGenerico2x1bit:MUX_SUB|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT16|muxGenerico2x1bit:MUX_SUB             ; muxGenerico2x1bit   ; work         ;
+;          |muxGenerico4x1bit:MUX_ULAout| ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT16|muxGenerico4x1bit:MUX_ULAout          ; muxGenerico4x1bit   ; work         ;
+;          |somador1bit:SOMADOR|          ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT16|somador1bit:SOMADOR                   ; somador1bit         ; work         ;
+;             |operadorOR:OR1|            ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT16|somador1bit:SOMADOR|operadorOR:OR1    ; operadorOR          ; work         ;
+;             |operadorXOR:XOR1|          ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT16|somador1bit:SOMADOR|operadorXOR:XOR1  ; operadorXOR         ; work         ;
+;       |ULAMIPS1bit:BIT17|               ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT17                                       ; ULAMIPS1bit         ; work         ;
+;          |muxGenerico2x1bit:MUX_SUB|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT17|muxGenerico2x1bit:MUX_SUB             ; muxGenerico2x1bit   ; work         ;
+;          |muxGenerico4x1bit:MUX_ULAout| ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT17|muxGenerico4x1bit:MUX_ULAout          ; muxGenerico4x1bit   ; work         ;
+;       |ULAMIPS1bit:BIT18|               ; 5 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT18                                       ; ULAMIPS1bit         ; work         ;
+;          |muxGenerico2x1bit:MUX_SUB|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT18|muxGenerico2x1bit:MUX_SUB             ; muxGenerico2x1bit   ; work         ;
+;          |muxGenerico4x1bit:MUX_ULAout| ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT18|muxGenerico4x1bit:MUX_ULAout          ; muxGenerico4x1bit   ; work         ;
+;          |somador1bit:SOMADOR|          ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT18|somador1bit:SOMADOR                   ; somador1bit         ; work         ;
+;             |operadorOR:OR1|            ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT18|somador1bit:SOMADOR|operadorOR:OR1    ; operadorOR          ; work         ;
+;       |ULAMIPS1bit:BIT19|               ; 5 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT19                                       ; ULAMIPS1bit         ; work         ;
+;          |muxGenerico2x1bit:MUX_SUB|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT19|muxGenerico2x1bit:MUX_SUB             ; muxGenerico2x1bit   ; work         ;
+;          |muxGenerico4x1bit:MUX_ULAout| ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT19|muxGenerico4x1bit:MUX_ULAout          ; muxGenerico4x1bit   ; work         ;
+;          |somador1bit:SOMADOR|          ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT19|somador1bit:SOMADOR                   ; somador1bit         ; work         ;
+;             |operadorAND:AND2|          ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT19|somador1bit:SOMADOR|operadorAND:AND2  ; operadorAND         ; work         ;
+;             |operadorXOR:XOR1|          ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT19|somador1bit:SOMADOR|operadorXOR:XOR1  ; operadorXOR         ; work         ;
+;       |ULAMIPS1bit:BIT1|                ; 3 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT1                                        ; ULAMIPS1bit         ; work         ;
+;          |muxGenerico2x1bit:MUX_SUB|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT1|muxGenerico2x1bit:MUX_SUB              ; muxGenerico2x1bit   ; work         ;
+;          |muxGenerico4x1bit:MUX_ULAout| ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT1|muxGenerico4x1bit:MUX_ULAout           ; muxGenerico4x1bit   ; work         ;
+;          |somador1bit:SOMADOR|          ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT1|somador1bit:SOMADOR                    ; somador1bit         ; work         ;
+;             |operadorOR:OR1|            ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT1|somador1bit:SOMADOR|operadorOR:OR1     ; operadorOR          ; work         ;
+;       |ULAMIPS1bit:BIT20|               ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT20                                       ; ULAMIPS1bit         ; work         ;
+;          |muxGenerico2x1bit:MUX_SUB|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT20|muxGenerico2x1bit:MUX_SUB             ; muxGenerico2x1bit   ; work         ;
+;          |muxGenerico4x1bit:MUX_ULAout| ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT20|muxGenerico4x1bit:MUX_ULAout          ; muxGenerico4x1bit   ; work         ;
+;       |ULAMIPS1bit:BIT21|               ; 7 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT21                                       ; ULAMIPS1bit         ; work         ;
+;          |muxGenerico2x1bit:MUX_SUB|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT21|muxGenerico2x1bit:MUX_SUB             ; muxGenerico2x1bit   ; work         ;
+;          |muxGenerico4x1bit:MUX_ULAout| ; 4 (4)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT21|muxGenerico4x1bit:MUX_ULAout          ; muxGenerico4x1bit   ; work         ;
+;          |somador1bit:SOMADOR|          ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT21|somador1bit:SOMADOR                   ; somador1bit         ; work         ;
+;             |operadorOR:OR1|            ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT21|somador1bit:SOMADOR|operadorOR:OR1    ; operadorOR          ; work         ;
+;             |operadorXOR:XOR1|          ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT21|somador1bit:SOMADOR|operadorXOR:XOR1  ; operadorXOR         ; work         ;
+;       |ULAMIPS1bit:BIT22|               ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT22                                       ; ULAMIPS1bit         ; work         ;
+;          |muxGenerico2x1bit:MUX_SUB|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT22|muxGenerico2x1bit:MUX_SUB             ; muxGenerico2x1bit   ; work         ;
+;          |muxGenerico4x1bit:MUX_ULAout| ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT22|muxGenerico4x1bit:MUX_ULAout          ; muxGenerico4x1bit   ; work         ;
+;       |ULAMIPS1bit:BIT23|               ; 5 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT23                                       ; ULAMIPS1bit         ; work         ;
+;          |muxGenerico2x1bit:MUX_SUB|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT23|muxGenerico2x1bit:MUX_SUB             ; muxGenerico2x1bit   ; work         ;
+;          |muxGenerico4x1bit:MUX_ULAout| ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT23|muxGenerico4x1bit:MUX_ULAout          ; muxGenerico4x1bit   ; work         ;
+;          |somador1bit:SOMADOR|          ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT23|somador1bit:SOMADOR                   ; somador1bit         ; work         ;
+;             |operadorOR:OR1|            ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT23|somador1bit:SOMADOR|operadorOR:OR1    ; operadorOR          ; work         ;
+;       |ULAMIPS1bit:BIT24|               ; 5 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT24                                       ; ULAMIPS1bit         ; work         ;
+;          |muxGenerico2x1bit:MUX_SUB|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT24|muxGenerico2x1bit:MUX_SUB             ; muxGenerico2x1bit   ; work         ;
+;          |muxGenerico4x1bit:MUX_ULAout| ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT24|muxGenerico4x1bit:MUX_ULAout          ; muxGenerico4x1bit   ; work         ;
+;          |somador1bit:SOMADOR|          ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT24|somador1bit:SOMADOR                   ; somador1bit         ; work         ;
+;             |operadorAND:AND2|          ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT24|somador1bit:SOMADOR|operadorAND:AND2  ; operadorAND         ; work         ;
+;             |operadorXOR:XOR1|          ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT24|somador1bit:SOMADOR|operadorXOR:XOR1  ; operadorXOR         ; work         ;
+;       |ULAMIPS1bit:BIT25|               ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT25                                       ; ULAMIPS1bit         ; work         ;
+;          |muxGenerico2x1bit:MUX_SUB|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT25|muxGenerico2x1bit:MUX_SUB             ; muxGenerico2x1bit   ; work         ;
+;          |muxGenerico4x1bit:MUX_ULAout| ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT25|muxGenerico4x1bit:MUX_ULAout          ; muxGenerico4x1bit   ; work         ;
+;       |ULAMIPS1bit:BIT26|               ; 7 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT26                                       ; ULAMIPS1bit         ; work         ;
+;          |muxGenerico2x1bit:MUX_SUB|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT26|muxGenerico2x1bit:MUX_SUB             ; muxGenerico2x1bit   ; work         ;
+;          |muxGenerico4x1bit:MUX_ULAout| ; 4 (4)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT26|muxGenerico4x1bit:MUX_ULAout          ; muxGenerico4x1bit   ; work         ;
+;          |somador1bit:SOMADOR|          ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT26|somador1bit:SOMADOR                   ; somador1bit         ; work         ;
+;             |operadorOR:OR1|            ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT26|somador1bit:SOMADOR|operadorOR:OR1    ; operadorOR          ; work         ;
+;             |operadorXOR:XOR1|          ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT26|somador1bit:SOMADOR|operadorXOR:XOR1  ; operadorXOR         ; work         ;
+;       |ULAMIPS1bit:BIT27|               ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT27                                       ; ULAMIPS1bit         ; work         ;
+;          |muxGenerico2x1bit:MUX_SUB|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT27|muxGenerico2x1bit:MUX_SUB             ; muxGenerico2x1bit   ; work         ;
+;          |muxGenerico4x1bit:MUX_ULAout| ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT27|muxGenerico4x1bit:MUX_ULAout          ; muxGenerico4x1bit   ; work         ;
+;       |ULAMIPS1bit:BIT28|               ; 6 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT28                                       ; ULAMIPS1bit         ; work         ;
+;          |muxGenerico2x1bit:MUX_SUB|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT28|muxGenerico2x1bit:MUX_SUB             ; muxGenerico2x1bit   ; work         ;
+;          |muxGenerico4x1bit:MUX_ULAout| ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT28|muxGenerico4x1bit:MUX_ULAout          ; muxGenerico4x1bit   ; work         ;
+;          |somador1bit:SOMADOR|          ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT28|somador1bit:SOMADOR                   ; somador1bit         ; work         ;
+;             |operadorOR:OR1|            ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT28|somador1bit:SOMADOR|operadorOR:OR1    ; operadorOR          ; work         ;
+;             |operadorXOR:XOR1|          ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT28|somador1bit:SOMADOR|operadorXOR:XOR1  ; operadorXOR         ; work         ;
+;       |ULAMIPS1bit:BIT29|               ; 8 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT29                                       ; ULAMIPS1bit         ; work         ;
+;          |muxGenerico2x1bit:MUX_SUB|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT29|muxGenerico2x1bit:MUX_SUB             ; muxGenerico2x1bit   ; work         ;
+;          |muxGenerico4x1bit:MUX_ULAout| ; 5 (5)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT29|muxGenerico4x1bit:MUX_ULAout          ; muxGenerico4x1bit   ; work         ;
+;          |somador1bit:SOMADOR|          ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT29|somador1bit:SOMADOR                   ; somador1bit         ; work         ;
+;             |operadorAND:AND2|          ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT29|somador1bit:SOMADOR|operadorAND:AND2  ; operadorAND         ; work         ;
+;             |operadorXOR:XOR1|          ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT29|somador1bit:SOMADOR|operadorXOR:XOR1  ; operadorXOR         ; work         ;
+;       |ULAMIPS1bit:BIT2|                ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT2                                        ; ULAMIPS1bit         ; work         ;
+;          |muxGenerico2x1bit:MUX_SUB|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT2|muxGenerico2x1bit:MUX_SUB              ; muxGenerico2x1bit   ; work         ;
+;          |muxGenerico4x1bit:MUX_ULAout| ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT2|muxGenerico4x1bit:MUX_ULAout           ; muxGenerico4x1bit   ; work         ;
+;       |ULAMIPS1bit:BIT30|               ; 3 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT30                                       ; ULAMIPS1bit         ; work         ;
+;          |muxGenerico2x1bit:MUX_SUB|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT30|muxGenerico2x1bit:MUX_SUB             ; muxGenerico2x1bit   ; work         ;
+;          |muxGenerico4x1bit:MUX_ULAout| ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT30|muxGenerico4x1bit:MUX_ULAout          ; muxGenerico4x1bit   ; work         ;
+;          |somador1bit:SOMADOR|          ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT30|somador1bit:SOMADOR                   ; somador1bit         ; work         ;
+;             |operadorOR:OR1|            ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT30|somador1bit:SOMADOR|operadorOR:OR1    ; operadorOR          ; work         ;
+;       |ULAMIPS1bit:BIT3|                ; 5 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT3                                        ; ULAMIPS1bit         ; work         ;
+;          |muxGenerico2x1bit:MUX_SUB|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT3|muxGenerico2x1bit:MUX_SUB              ; muxGenerico2x1bit   ; work         ;
+;          |muxGenerico4x1bit:MUX_ULAout| ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT3|muxGenerico4x1bit:MUX_ULAout           ; muxGenerico4x1bit   ; work         ;
+;          |somador1bit:SOMADOR|          ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT3|somador1bit:SOMADOR                    ; somador1bit         ; work         ;
+;             |operadorOR:OR1|            ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT3|somador1bit:SOMADOR|operadorOR:OR1     ; operadorOR          ; work         ;
+;       |ULAMIPS1bit:BIT4|                ; 6 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT4                                        ; ULAMIPS1bit         ; work         ;
+;          |muxGenerico2x1bit:MUX_SUB|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT4|muxGenerico2x1bit:MUX_SUB              ; muxGenerico2x1bit   ; work         ;
+;          |muxGenerico4x1bit:MUX_ULAout| ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT4|muxGenerico4x1bit:MUX_ULAout           ; muxGenerico4x1bit   ; work         ;
+;          |somador1bit:SOMADOR|          ; 3 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT4|somador1bit:SOMADOR                    ; somador1bit         ; work         ;
+;             |operadorAND:AND1|          ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT4|somador1bit:SOMADOR|operadorAND:AND1   ; operadorAND         ; work         ;
+;             |operadorAND:AND2|          ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT4|somador1bit:SOMADOR|operadorAND:AND2   ; operadorAND         ; work         ;
+;             |operadorXOR:XOR1|          ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT4|somador1bit:SOMADOR|operadorXOR:XOR1   ; operadorXOR         ; work         ;
+;       |ULAMIPS1bit:BIT5|                ; 4 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT5                                        ; ULAMIPS1bit         ; work         ;
+;          |muxGenerico2x1bit:MUX_SUB|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT5|muxGenerico2x1bit:MUX_SUB              ; muxGenerico2x1bit   ; work         ;
+;          |muxGenerico4x1bit:MUX_ULAout| ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT5|muxGenerico4x1bit:MUX_ULAout           ; muxGenerico4x1bit   ; work         ;
+;       |ULAMIPS1bit:BIT6|                ; 7 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT6                                        ; ULAMIPS1bit         ; work         ;
+;          |muxGenerico2x1bit:MUX_SUB|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT6|muxGenerico2x1bit:MUX_SUB              ; muxGenerico2x1bit   ; work         ;
+;          |muxGenerico4x1bit:MUX_ULAout| ; 4 (4)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT6|muxGenerico4x1bit:MUX_ULAout           ; muxGenerico4x1bit   ; work         ;
+;          |somador1bit:SOMADOR|          ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT6|somador1bit:SOMADOR                    ; somador1bit         ; work         ;
+;             |operadorOR:OR1|            ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT6|somador1bit:SOMADOR|operadorOR:OR1     ; operadorOR          ; work         ;
+;             |operadorXOR:XOR1|          ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT6|somador1bit:SOMADOR|operadorXOR:XOR1   ; operadorXOR         ; work         ;
+;       |ULAMIPS1bit:BIT7|                ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT7                                        ; ULAMIPS1bit         ; work         ;
+;          |muxGenerico2x1bit:MUX_SUB|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT7|muxGenerico2x1bit:MUX_SUB              ; muxGenerico2x1bit   ; work         ;
+;          |muxGenerico4x1bit:MUX_ULAout| ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT7|muxGenerico4x1bit:MUX_ULAout           ; muxGenerico4x1bit   ; work         ;
+;       |ULAMIPS1bit:BIT8|                ; 5 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT8                                        ; ULAMIPS1bit         ; work         ;
+;          |muxGenerico2x1bit:MUX_SUB|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT8|muxGenerico2x1bit:MUX_SUB              ; muxGenerico2x1bit   ; work         ;
+;          |muxGenerico4x1bit:MUX_ULAout| ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT8|muxGenerico4x1bit:MUX_ULAout           ; muxGenerico4x1bit   ; work         ;
+;          |somador1bit:SOMADOR|          ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT8|somador1bit:SOMADOR                    ; somador1bit         ; work         ;
+;             |operadorOR:OR1|            ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT8|somador1bit:SOMADOR|operadorOR:OR1     ; operadorOR          ; work         ;
+;             |operadorXOR:XOR1|          ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT8|somador1bit:SOMADOR|operadorXOR:XOR1   ; operadorXOR         ; work         ;
+;       |ULAMIPS1bit:BIT9|                ; 5 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT9                                        ; ULAMIPS1bit         ; work         ;
+;          |muxGenerico2x1bit:MUX_SUB|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT9|muxGenerico2x1bit:MUX_SUB              ; muxGenerico2x1bit   ; work         ;
+;          |muxGenerico4x1bit:MUX_ULAout| ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT9|muxGenerico4x1bit:MUX_ULAout           ; muxGenerico4x1bit   ; work         ;
+;          |somador1bit:SOMADOR|          ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT9|somador1bit:SOMADOR                    ; somador1bit         ; work         ;
+;             |operadorAND:AND2|          ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT9|somador1bit:SOMADOR|operadorAND:AND2   ; operadorAND         ; work         ;
+;             |operadorXOR:XOR1|          ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT9|somador1bit:SOMADOR|operadorXOR:XOR1   ; operadorXOR         ; work         ;
+;       |ULAMIPSbit31:BIT31|              ; 6 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPSbit31:BIT31                                      ; ULAMIPSbit31        ; work         ;
+;          |muxGenerico2x1bit:MUX_SUB|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPSbit31:BIT31|muxGenerico2x1bit:MUX_SUB            ; muxGenerico2x1bit   ; work         ;
+;          |muxGenerico4x1bit:MUX_ULAout| ; 4 (4)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPSbit31:BIT31|muxGenerico4x1bit:MUX_ULAout         ; muxGenerico4x1bit   ; work         ;
+;          |somador1bit:SOMADOR|          ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPSbit31:BIT31|somador1bit:SOMADOR                  ; somador1bit         ; work         ;
+;             |operadorXOR:XOR1|          ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPSbit31:BIT31|somador1bit:SOMADOR|operadorXOR:XOR1 ; operadorXOR         ; work         ;
+;    |ULActrl:Controle_ULA1|              ; 7 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULActrl:Controle_ULA1                                               ; ULActrl             ; work         ;
+;       |muxGenerico2x1:Mux_Rt_Rd|        ; 5 (5)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|ULActrl:Controle_ULA1|muxGenerico2x1:Mux_Rt_Rd                      ; muxGenerico2x1      ; work         ;
+;    |UnidadeControle:Unidade_Controle|   ; 12 (12)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|UnidadeControle:Unidade_Controle                                    ; UnidadeControle     ; work         ;
+;    |bancoReg:bancoRegs|                 ; 575 (575)           ; 768 (768)                 ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|bancoReg:bancoRegs                                                  ; bancoReg            ; work         ;
+;    |conversorHex7Seg:Decod7seg_HEX0|    ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|conversorHex7Seg:Decod7seg_HEX0                                     ; conversorHex7Seg    ; work         ;
+;    |conversorHex7Seg:Decod7seg_HEX1|    ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|conversorHex7Seg:Decod7seg_HEX1                                     ; conversorHex7Seg    ; work         ;
+;    |conversorHex7Seg:Decod7seg_HEX2|    ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|conversorHex7Seg:Decod7seg_HEX2                                     ; conversorHex7Seg    ; work         ;
+;    |conversorHex7Seg:Decod7seg_HEX3|    ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|conversorHex7Seg:Decod7seg_HEX3                                     ; conversorHex7Seg    ; work         ;
+;    |conversorHex7Seg:Decod7seg_HEX4|    ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|conversorHex7Seg:Decod7seg_HEX4                                     ; conversorHex7Seg    ; work         ;
+;    |conversorHex7Seg:Decod7seg_HEX5|    ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|conversorHex7Seg:Decod7seg_HEX5                                     ; conversorHex7Seg    ; work         ;
+;    |edgeDetector:\gravar:detectorSub0|  ; 2 (2)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|edgeDetector:\gravar:detectorSub0                                   ; edgeDetector        ; work         ;
+;    |muxGenerico2x1:muxJR|               ; 36 (36)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|muxGenerico2x1:muxJR                                                ; muxGenerico2x1      ; work         ;
+;    |muxGenerico2x1:muxPlaca|            ; 32 (32)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|muxGenerico2x1:muxPlaca                                             ; muxGenerico2x1      ; work         ;
+;    |muxGenerico4x1:Mux_Rt_Rd_31|        ; 4 (4)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|muxGenerico4x1:Mux_Rt_Rd_31                                         ; muxGenerico4x1      ; work         ;
+;    |muxGenerico4x1:Mux_ULA_RAM_LUI|     ; 34 (34)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|muxGenerico4x1:Mux_ULA_RAM_LUI                                      ; muxGenerico4x1      ; work         ;
+;    |operadorAND2x1:opANDBEQ|            ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|operadorAND2x1:opANDBEQ                                             ; operadorAND2x1      ; work         ;
+;    |registradorGenerico:PC|             ; 3 (3)               ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|registradorGenerico:PC                                              ; registradorGenerico ; work         ;
+;    |somaConstante:incrementaPC|         ; 30 (30)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|somaConstante:incrementaPC                                          ; somaConstante       ; work         ;
+;    |somadorGenerico:somadorBrAdd|       ; 32 (32)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |MipsCicloUnico|somadorGenerico:somadorBrAdd                                        ; somadorGenerico     ; work         ;
++-----------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------+---------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++---------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                    ;
++-----------------------------------------+---------------------------------------------+
+; Register name                           ; Reason for Removal                          ;
++-----------------------------------------+---------------------------------------------+
+; bancoReg:bancoRegs|registrador~583      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~647      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~551      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~615      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~839      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~903      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~807      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~871      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~582      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~646      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~550      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~614      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~838      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~902      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~806      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~870      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~584      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~648      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~552      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~616      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~840      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~904      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~808      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~872      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~585      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~649      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~553      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~617      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~841      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~905      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~809      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~873      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~586      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~650      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~554      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~618      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~842      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~906      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~810      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~874      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~587      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~651      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~555      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~619      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~843      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~907      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~811      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~875      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~588      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~652      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~556      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~620      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~844      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~908      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~812      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~876      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~589      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~653      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~557      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~621      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~845      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~909      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~813      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~877      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~590      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~654      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~558      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~622      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~846      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~910      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~814      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~878      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~591      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~655      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~559      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~623      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~847      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~911      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~815      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~879      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~592      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~656      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~560      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~624      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~848      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~912      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~816      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~880      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~593      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~657      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~561      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~625      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~849      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~913      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~817      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~881      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~594      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~658      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~562      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~626      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~850      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~914      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~818      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~882      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~595      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~659      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~563      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~627      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~851      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~915      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~819      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~883      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~596      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~660      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~564      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~628      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~852      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~916      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~820      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~884      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~597      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~661      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~565      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~629      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~853      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~917      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~821      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~885      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~598      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~662      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~566      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~630      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~854      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~918      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~822      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~886      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~599      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~663      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~567      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~631      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~855      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~919      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~823      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~887      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~600      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~664      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~568      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~632      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~856      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~920      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~824      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~888      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~601      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~665      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~569      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~633      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~857      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~921      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~825      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~889      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~602      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~666      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~570      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~634      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~858      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~922      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~826      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~890      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~603      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~667      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~571      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~635      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~859      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~923      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~827      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~891      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~604      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~668      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~572      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~636      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~860      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~924      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~828      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~892      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~605      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~669      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~573      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~637      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~861      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~925      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~829      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~893      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~606      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~670      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~574      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~638      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~862      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~926      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~830      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~894      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~607      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~671      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~575      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~639      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~863      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~927      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~831      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~895      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~608      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~672      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~576      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~640      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~864      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~928      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~832      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~896      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~609      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~673      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~577      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~641      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~865      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~929      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~833      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~897      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~610      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~674      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~578      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~642      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~866      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~930      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~834      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~898      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~611      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~675      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~579      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~643      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~867      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~931      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~835      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~899      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~612      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~676      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~580      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~644      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~868      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~932      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~836      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~900      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~613      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~677      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~581      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~645      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~869      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~933      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~837      ; Stuck at GND due to stuck port clock_enable ;
+; bancoReg:bancoRegs|registrador~901      ; Stuck at GND due to stuck port clock_enable ;
+; Total Number of Removed Registers = 256 ;                                             ;
++-----------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 2849  ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 2818  ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                          ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------------+
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |MipsCicloUnico|registradorGenerico:PC|DOUT[1]                                      ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |MipsCicloUnico|registradorGenerico:PC|DOUT[28]                                     ;
+; 4:1                ; 25 bits   ; 50 LEs        ; 50 LEs               ; 0 LEs                  ; Yes        ; |MipsCicloUnico|registradorGenerico:PC|DOUT[17]                                     ;
+; 4:1                ; 31 bits   ; 62 LEs        ; 62 LEs               ; 0 LEs                  ; No         ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT5|muxGenerico4x1bit:MUX_ULAout|saida_MUX ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; No         ; |MipsCicloUnico|ULAMIPS:ULA|ULAMIPS1bit:BIT20|muxGenerico2x1bit:MUX_SUB|saida_MUX   ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |MipsCicloUnico|muxGenerico4x1:Mux_ULA_RAM_LUI|saida_MUX[4]                         ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |MipsCicloUnico|muxGenerico4x1:Mux_ULA_RAM_LUI|saida_MUX[20]                        ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |MipsCicloUnico|muxGenerico4x1:Mux_Rt_Rd_31|saida_MUX[0]                            ;
+; 12:1               ; 3 bits    ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |MipsCicloUnico|ULActrl:Controle_ULA1|saida[2]                                      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |MipsCicloUnico ;
++------------------+-------+-----------------------------------------------------+
+; Parameter Name   ; Value ; Type                                                ;
++------------------+-------+-----------------------------------------------------+
+; larguraDados     ; 32    ; Signed Integer                                      ;
+; larguraEnderecos ; 32    ; Signed Integer                                      ;
+; simulacao        ; false ; Enumerated                                          ;
++------------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: registradorGenerico:PC ;
++----------------+-------+--------------------------------------------+
+; Parameter Name ; Value ; Type                                       ;
++----------------+-------+--------------------------------------------+
+; larguradados   ; 32    ; Signed Integer                             ;
++----------------+-------+--------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: somaConstante:incrementaPC ;
++----------------+-------+------------------------------------------------+
+; Parameter Name ; Value ; Type                                           ;
++----------------+-------+------------------------------------------------+
+; larguradados   ; 32    ; Signed Integer                                 ;
+; constante      ; 4     ; Signed Integer                                 ;
++----------------+-------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ROMMIPS:ROM ;
++-----------------+-------+--------------------------------+
+; Parameter Name  ; Value ; Type                           ;
++-----------------+-------+--------------------------------+
+; datawidth       ; 32    ; Signed Integer                 ;
+; addrwidth       ; 32    ; Signed Integer                 ;
+; memoryaddrwidth ; 6     ; Signed Integer                 ;
++-----------------+-------+--------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ULActrl:Controle_ULA1|muxGenerico2x1:Mux_Rt_Rd ;
++----------------+-------+--------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                               ;
++----------------+-------+--------------------------------------------------------------------+
+; larguradados   ; 6     ; Signed Integer                                                     ;
++----------------+-------+--------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: muxGenerico4x1:Mux_Rt_Rd_31 ;
++----------------+-------+-------------------------------------------------+
+; Parameter Name ; Value ; Type                                            ;
++----------------+-------+-------------------------------------------------+
+; larguradados   ; 5     ; Signed Integer                                  ;
++----------------+-------+-------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: bancoReg:bancoRegs ;
++---------------------+-------+-----------------------------------+
+; Parameter Name      ; Value ; Type                              ;
++---------------------+-------+-----------------------------------+
+; larguradados        ; 32    ; Signed Integer                    ;
+; larguraendbancoregs ; 5     ; Signed Integer                    ;
++---------------------+-------+-----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: muxGenerico2x1:Mux_Rt_Imediato ;
++----------------+-------+----------------------------------------------------+
+; Parameter Name ; Value ; Type                                               ;
++----------------+-------+----------------------------------------------------+
+; larguradados   ; 32    ; Signed Integer                                     ;
++----------------+-------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ULAMIPS:ULA ;
++----------------+-------+---------------------------------+
+; Parameter Name ; Value ; Type                            ;
++----------------+-------+---------------------------------+
+; larguradados   ; 32    ; Signed Integer                  ;
++----------------+-------+---------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: RAMMIPS:RAM ;
++-----------------+-------+--------------------------------+
+; Parameter Name  ; Value ; Type                           ;
++-----------------+-------+--------------------------------+
+; datawidth       ; 32    ; Signed Integer                 ;
+; addrwidth       ; 32    ; Signed Integer                 ;
+; memoryaddrwidth ; 6     ; Signed Integer                 ;
++-----------------+-------+--------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: estendeSinalGenerico:estendeSinal ;
++--------------------+-------+---------------------------------------------------+
+; Parameter Name     ; Value ; Type                                              ;
++--------------------+-------+---------------------------------------------------+
+; larguradadoentrada ; 16    ; Signed Integer                                    ;
+; larguradadosaida   ; 32    ; Signed Integer                                    ;
++--------------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: estendeLUI:estendeLUI1 ;
++--------------------+-------+----------------------------------------+
+; Parameter Name     ; Value ; Type                                   ;
++--------------------+-------+----------------------------------------+
+; larguradadoentrada ; 16    ; Signed Integer                         ;
+; larguradadosaida   ; 32    ; Signed Integer                         ;
++--------------------+-------+----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: muxGenerico4x1:Mux_ULA_RAM_LUI ;
++----------------+-------+----------------------------------------------------+
+; Parameter Name ; Value ; Type                                               ;
++----------------+-------+----------------------------------------------------+
+; larguradados   ; 32    ; Signed Integer                                     ;
++----------------+-------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: somadorGenerico:somadorBrAdd ;
++----------------+-------+--------------------------------------------------+
+; Parameter Name ; Value ; Type                                             ;
++----------------+-------+--------------------------------------------------+
+; larguradados   ; 32    ; Signed Integer                                   ;
++----------------+-------+--------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: muxGenerico2x1:muxBEQPC4 ;
++----------------+-------+----------------------------------------------+
+; Parameter Name ; Value ; Type                                         ;
++----------------+-------+----------------------------------------------+
+; larguradados   ; 32    ; Signed Integer                               ;
++----------------+-------+----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: muxGenerico2x1:muxDesvio ;
++----------------+-------+----------------------------------------------+
+; Parameter Name ; Value ; Type                                         ;
++----------------+-------+----------------------------------------------+
+; larguradados   ; 32    ; Signed Integer                               ;
++----------------+-------+----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: muxGenerico2x1:muxJR ;
++----------------+-------+------------------------------------------+
+; Parameter Name ; Value ; Type                                     ;
++----------------+-------+------------------------------------------+
+; larguradados   ; 32    ; Signed Integer                           ;
++----------------+-------+------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: muxGenerico2x1:muxPlaca ;
++----------------+-------+---------------------------------------------+
+; Parameter Name ; Value ; Type                                        ;
++----------------+-------+---------------------------------------------+
+; larguradados   ; 32    ; Signed Integer                              ;
++----------------+-------+---------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------+
+; Port Connectivity Checks: "conversorHex7Seg:Decod7seg_HEX5" ;
++----------+-------+----------+-------------------------------+
+; Port     ; Type  ; Severity ; Details                       ;
++----------+-------+----------+-------------------------------+
+; apaga    ; Input ; Info     ; Stuck at GND                  ;
+; negativo ; Input ; Info     ; Stuck at GND                  ;
+; overflow ; Input ; Info     ; Stuck at GND                  ;
++----------+-------+----------+-------------------------------+
+
+
++-------------------------------------------------------------+
+; Port Connectivity Checks: "conversorHex7Seg:Decod7seg_HEX4" ;
++----------+-------+----------+-------------------------------+
+; Port     ; Type  ; Severity ; Details                       ;
++----------+-------+----------+-------------------------------+
+; apaga    ; Input ; Info     ; Stuck at GND                  ;
+; negativo ; Input ; Info     ; Stuck at GND                  ;
+; overflow ; Input ; Info     ; Stuck at GND                  ;
++----------+-------+----------+-------------------------------+
+
+
++-------------------------------------------------------------+
+; Port Connectivity Checks: "conversorHex7Seg:Decod7seg_HEX3" ;
++----------+-------+----------+-------------------------------+
+; Port     ; Type  ; Severity ; Details                       ;
++----------+-------+----------+-------------------------------+
+; apaga    ; Input ; Info     ; Stuck at GND                  ;
+; negativo ; Input ; Info     ; Stuck at GND                  ;
+; overflow ; Input ; Info     ; Stuck at GND                  ;
++----------+-------+----------+-------------------------------+
+
+
++-------------------------------------------------------------+
+; Port Connectivity Checks: "conversorHex7Seg:Decod7seg_HEX2" ;
++----------+-------+----------+-------------------------------+
+; Port     ; Type  ; Severity ; Details                       ;
++----------+-------+----------+-------------------------------+
+; apaga    ; Input ; Info     ; Stuck at GND                  ;
+; negativo ; Input ; Info     ; Stuck at GND                  ;
+; overflow ; Input ; Info     ; Stuck at GND                  ;
++----------+-------+----------+-------------------------------+
+
+
++-------------------------------------------------------------+
+; Port Connectivity Checks: "conversorHex7Seg:Decod7seg_HEX1" ;
++----------+-------+----------+-------------------------------+
+; Port     ; Type  ; Severity ; Details                       ;
++----------+-------+----------+-------------------------------+
+; apaga    ; Input ; Info     ; Stuck at GND                  ;
+; negativo ; Input ; Info     ; Stuck at GND                  ;
+; overflow ; Input ; Info     ; Stuck at GND                  ;
++----------+-------+----------+-------------------------------+
+
+
++-------------------------------------------------------------+
+; Port Connectivity Checks: "conversorHex7Seg:Decod7seg_HEX0" ;
++----------+-------+----------+-------------------------------+
+; Port     ; Type  ; Severity ; Details                       ;
++----------+-------+----------+-------------------------------+
+; apaga    ; Input ; Info     ; Stuck at GND                  ;
+; negativo ; Input ; Info     ; Stuck at GND                  ;
+; overflow ; Input ; Info     ; Stuck at GND                  ;
++----------+-------+----------+-------------------------------+
+
+
++-----------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "estendeSinalGenerico:estendeSinal|muxGenerico2x1bit:MUX_ORI" ;
++--------------+-------+----------+-------------------------------------------------------+
+; Port         ; Type  ; Severity ; Details                                               ;
++--------------+-------+----------+-------------------------------------------------------+
+; entradab_mux ; Input ; Info     ; Stuck at GND                                          ;
++--------------+-------+----------+-------------------------------------------------------+
+
+
++--------------------------------------------+
+; Port Connectivity Checks: "RAMMIPS:RAM"    ;
++----------+-------+----------+--------------+
+; Port     ; Type  ; Severity ; Details      ;
++----------+-------+----------+--------------+
+; habilita ; Input ; Info     ; Stuck at VCC ;
++----------+-------+----------+--------------+
+
+
++------------------------------------------------------------+
+; Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPSbit31:BIT31" ;
++------+-------+----------+----------------------------------+
+; Port ; Type  ; Severity ; Details                          ;
++------+-------+----------+----------------------------------+
+; slt  ; Input ; Info     ; Stuck at GND                     ;
++------+-------+----------+----------------------------------+
+
+
++-----------------------------------------------------------+
+; Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT30" ;
++------+-------+----------+---------------------------------+
+; Port ; Type  ; Severity ; Details                         ;
++------+-------+----------+---------------------------------+
+; slt  ; Input ; Info     ; Stuck at GND                    ;
++------+-------+----------+---------------------------------+
+
+
++-----------------------------------------------------------+
+; Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT29" ;
++------+-------+----------+---------------------------------+
+; Port ; Type  ; Severity ; Details                         ;
++------+-------+----------+---------------------------------+
+; slt  ; Input ; Info     ; Stuck at GND                    ;
++------+-------+----------+---------------------------------+
+
+
++-----------------------------------------------------------+
+; Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT28" ;
++------+-------+----------+---------------------------------+
+; Port ; Type  ; Severity ; Details                         ;
++------+-------+----------+---------------------------------+
+; slt  ; Input ; Info     ; Stuck at GND                    ;
++------+-------+----------+---------------------------------+
+
+
++-----------------------------------------------------------+
+; Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT27" ;
++------+-------+----------+---------------------------------+
+; Port ; Type  ; Severity ; Details                         ;
++------+-------+----------+---------------------------------+
+; slt  ; Input ; Info     ; Stuck at GND                    ;
++------+-------+----------+---------------------------------+
+
+
++-----------------------------------------------------------+
+; Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT26" ;
++------+-------+----------+---------------------------------+
+; Port ; Type  ; Severity ; Details                         ;
++------+-------+----------+---------------------------------+
+; slt  ; Input ; Info     ; Stuck at GND                    ;
++------+-------+----------+---------------------------------+
+
+
++-----------------------------------------------------------+
+; Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT25" ;
++------+-------+----------+---------------------------------+
+; Port ; Type  ; Severity ; Details                         ;
++------+-------+----------+---------------------------------+
+; slt  ; Input ; Info     ; Stuck at GND                    ;
++------+-------+----------+---------------------------------+
+
+
++-----------------------------------------------------------+
+; Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT24" ;
++------+-------+----------+---------------------------------+
+; Port ; Type  ; Severity ; Details                         ;
++------+-------+----------+---------------------------------+
+; slt  ; Input ; Info     ; Stuck at GND                    ;
++------+-------+----------+---------------------------------+
+
+
++-----------------------------------------------------------+
+; Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT23" ;
++------+-------+----------+---------------------------------+
+; Port ; Type  ; Severity ; Details                         ;
++------+-------+----------+---------------------------------+
+; slt  ; Input ; Info     ; Stuck at GND                    ;
++------+-------+----------+---------------------------------+
+
+
++-----------------------------------------------------------+
+; Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT22" ;
++------+-------+----------+---------------------------------+
+; Port ; Type  ; Severity ; Details                         ;
++------+-------+----------+---------------------------------+
+; slt  ; Input ; Info     ; Stuck at GND                    ;
++------+-------+----------+---------------------------------+
+
+
++-----------------------------------------------------------+
+; Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT21" ;
++------+-------+----------+---------------------------------+
+; Port ; Type  ; Severity ; Details                         ;
++------+-------+----------+---------------------------------+
+; slt  ; Input ; Info     ; Stuck at GND                    ;
++------+-------+----------+---------------------------------+
+
+
++-----------------------------------------------------------+
+; Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT20" ;
++------+-------+----------+---------------------------------+
+; Port ; Type  ; Severity ; Details                         ;
++------+-------+----------+---------------------------------+
+; slt  ; Input ; Info     ; Stuck at GND                    ;
++------+-------+----------+---------------------------------+
+
+
++-----------------------------------------------------------+
+; Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT19" ;
++------+-------+----------+---------------------------------+
+; Port ; Type  ; Severity ; Details                         ;
++------+-------+----------+---------------------------------+
+; slt  ; Input ; Info     ; Stuck at GND                    ;
++------+-------+----------+---------------------------------+
+
+
++-----------------------------------------------------------+
+; Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT18" ;
++------+-------+----------+---------------------------------+
+; Port ; Type  ; Severity ; Details                         ;
++------+-------+----------+---------------------------------+
+; slt  ; Input ; Info     ; Stuck at GND                    ;
++------+-------+----------+---------------------------------+
+
+
++-----------------------------------------------------------+
+; Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT17" ;
++------+-------+----------+---------------------------------+
+; Port ; Type  ; Severity ; Details                         ;
++------+-------+----------+---------------------------------+
+; slt  ; Input ; Info     ; Stuck at GND                    ;
++------+-------+----------+---------------------------------+
+
+
++-----------------------------------------------------------+
+; Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT16" ;
++------+-------+----------+---------------------------------+
+; Port ; Type  ; Severity ; Details                         ;
++------+-------+----------+---------------------------------+
+; slt  ; Input ; Info     ; Stuck at GND                    ;
++------+-------+----------+---------------------------------+
+
+
++-----------------------------------------------------------+
+; Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT15" ;
++------+-------+----------+---------------------------------+
+; Port ; Type  ; Severity ; Details                         ;
++------+-------+----------+---------------------------------+
+; slt  ; Input ; Info     ; Stuck at GND                    ;
++------+-------+----------+---------------------------------+
+
+
++-----------------------------------------------------------+
+; Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT14" ;
++------+-------+----------+---------------------------------+
+; Port ; Type  ; Severity ; Details                         ;
++------+-------+----------+---------------------------------+
+; slt  ; Input ; Info     ; Stuck at GND                    ;
++------+-------+----------+---------------------------------+
+
+
++-----------------------------------------------------------+
+; Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT13" ;
++------+-------+----------+---------------------------------+
+; Port ; Type  ; Severity ; Details                         ;
++------+-------+----------+---------------------------------+
+; slt  ; Input ; Info     ; Stuck at GND                    ;
++------+-------+----------+---------------------------------+
+
+
++-----------------------------------------------------------+
+; Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT12" ;
++------+-------+----------+---------------------------------+
+; Port ; Type  ; Severity ; Details                         ;
++------+-------+----------+---------------------------------+
+; slt  ; Input ; Info     ; Stuck at GND                    ;
++------+-------+----------+---------------------------------+
+
+
++-----------------------------------------------------------+
+; Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT11" ;
++------+-------+----------+---------------------------------+
+; Port ; Type  ; Severity ; Details                         ;
++------+-------+----------+---------------------------------+
+; slt  ; Input ; Info     ; Stuck at GND                    ;
++------+-------+----------+---------------------------------+
+
+
++-----------------------------------------------------------+
+; Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT10" ;
++------+-------+----------+---------------------------------+
+; Port ; Type  ; Severity ; Details                         ;
++------+-------+----------+---------------------------------+
+; slt  ; Input ; Info     ; Stuck at GND                    ;
++------+-------+----------+---------------------------------+
+
+
++----------------------------------------------------------+
+; Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT9" ;
++------+-------+----------+--------------------------------+
+; Port ; Type  ; Severity ; Details                        ;
++------+-------+----------+--------------------------------+
+; slt  ; Input ; Info     ; Stuck at GND                   ;
++------+-------+----------+--------------------------------+
+
+
++----------------------------------------------------------+
+; Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT8" ;
++------+-------+----------+--------------------------------+
+; Port ; Type  ; Severity ; Details                        ;
++------+-------+----------+--------------------------------+
+; slt  ; Input ; Info     ; Stuck at GND                   ;
++------+-------+----------+--------------------------------+
+
+
++----------------------------------------------------------+
+; Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT7" ;
++------+-------+----------+--------------------------------+
+; Port ; Type  ; Severity ; Details                        ;
++------+-------+----------+--------------------------------+
+; slt  ; Input ; Info     ; Stuck at GND                   ;
++------+-------+----------+--------------------------------+
+
+
++----------------------------------------------------------+
+; Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT6" ;
++------+-------+----------+--------------------------------+
+; Port ; Type  ; Severity ; Details                        ;
++------+-------+----------+--------------------------------+
+; slt  ; Input ; Info     ; Stuck at GND                   ;
++------+-------+----------+--------------------------------+
+
+
++----------------------------------------------------------+
+; Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT5" ;
++------+-------+----------+--------------------------------+
+; Port ; Type  ; Severity ; Details                        ;
++------+-------+----------+--------------------------------+
+; slt  ; Input ; Info     ; Stuck at GND                   ;
++------+-------+----------+--------------------------------+
+
+
++----------------------------------------------------------+
+; Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT4" ;
++------+-------+----------+--------------------------------+
+; Port ; Type  ; Severity ; Details                        ;
++------+-------+----------+--------------------------------+
+; slt  ; Input ; Info     ; Stuck at GND                   ;
++------+-------+----------+--------------------------------+
+
+
++----------------------------------------------------------+
+; Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT3" ;
++------+-------+----------+--------------------------------+
+; Port ; Type  ; Severity ; Details                        ;
++------+-------+----------+--------------------------------+
+; slt  ; Input ; Info     ; Stuck at GND                   ;
++------+-------+----------+--------------------------------+
+
+
++----------------------------------------------------------+
+; Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT2" ;
++------+-------+----------+--------------------------------+
+; Port ; Type  ; Severity ; Details                        ;
++------+-------+----------+--------------------------------+
+; slt  ; Input ; Info     ; Stuck at GND                   ;
++------+-------+----------+--------------------------------+
+
+
++----------------------------------------------------------+
+; Port Connectivity Checks: "ULAMIPS:ULA|ULAMIPS1bit:BIT1" ;
++------+-------+----------+--------------------------------+
+; Port ; Type  ; Severity ; Details                        ;
++------+-------+----------+--------------------------------+
+; slt  ; Input ; Info     ; Stuck at GND                   ;
++------+-------+----------+--------------------------------+
+
+
++---------------------------------------------------------+
+; Port Connectivity Checks: "muxGenerico4x1:Mux_Rt_Rd_31" ;
++--------------+-------+----------+-----------------------+
+; Port         ; Type  ; Severity ; Details               ;
++--------------+-------+----------+-----------------------+
+; entrada2_mux ; Input ; Info     ; Stuck at VCC          ;
+; entrada3_mux ; Input ; Info     ; Stuck at GND          ;
++--------------+-------+----------+-----------------------+
+
+
++----------------------------------------------------+
+; Port Connectivity Checks: "registradorGenerico:PC" ;
++--------+-------+----------+------------------------+
+; Port   ; Type  ; Severity ; Details                ;
++--------+-------+----------+------------------------+
+; enable ; Input ; Info     ; Stuck at VCC           ;
+; rst    ; Input ; Info     ; Stuck at GND           ;
++--------+-------+----------+------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 2849                        ;
+;     ENA               ; 2818                        ;
+;     plain             ; 31                          ;
+; arriav_lcell_comb     ; 1792                        ;
+;     arith             ; 62                          ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 31                          ;
+;         3 data inputs ; 1                           ;
+;         4 data inputs ; 15                          ;
+;         5 data inputs ; 14                          ;
+;     extend            ; 194                         ;
+;         7 data inputs ; 194                         ;
+;     normal            ; 1536                        ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 30                          ;
+;         2 data inputs ; 212                         ;
+;         3 data inputs ; 70                          ;
+;         4 data inputs ; 73                          ;
+;         5 data inputs ; 64                          ;
+;         6 data inputs ; 1086                        ;
+; boundary_port         ; 67                          ;
+;                       ;                             ;
+; Max LUT depth         ; 20.00                       ;
+; Average LUT depth     ; 9.29                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:07     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+    Info: Processing started: Sat May 18 14:38:55 2024
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off MipsCicloUnico -c MipsCicloUnico
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file rommips.vhd
+    Info (12022): Found design unit 1: ROMMIPS-assincrona File: C:/DESCOMP/MIPS_CICLO_UNICO/ROMMIPS.vhd Line: 15
+    Info (12023): Found entity 1: ROMMIPS File: C:/DESCOMP/MIPS_CICLO_UNICO/ROMMIPS.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file ulamipsbit31.vhd
+    Info (12022): Found design unit 1: ULAMIPSbit31-comportamento File: C:/DESCOMP/MIPS_CICLO_UNICO/ULAMIPSbit31.vhd Line: 14
+    Info (12023): Found entity 1: ULAMIPSbit31 File: C:/DESCOMP/MIPS_CICLO_UNICO/ULAMIPSbit31.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file ulamips1bit.vhd
+    Info (12022): Found design unit 1: ULAMIPS1bit-comportamento File: C:/DESCOMP/MIPS_CICLO_UNICO/ULAMIPS1bit.vhd Line: 14
+    Info (12023): Found entity 1: ULAMIPS1bit File: C:/DESCOMP/MIPS_CICLO_UNICO/ULAMIPS1bit.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file ulamips.vhd
+    Info (12022): Found design unit 1: ULAMIPS-comportamento File: C:/DESCOMP/MIPS_CICLO_UNICO/ULAMIPS.vhd Line: 22
+    Info (12023): Found entity 1: ULAMIPS File: C:/DESCOMP/MIPS_CICLO_UNICO/ULAMIPS.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file somadorgenerico.vhd
+    Info (12022): Found design unit 1: somadorGenerico-comportamento File: C:/DESCOMP/MIPS_CICLO_UNICO/somadorGenerico.vhd Line: 17
+    Info (12023): Found entity 1: somadorGenerico File: C:/DESCOMP/MIPS_CICLO_UNICO/somadorGenerico.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file somador1bit.vhd
+    Info (12022): Found design unit 1: somador1bit-comportamento File: C:/DESCOMP/MIPS_CICLO_UNICO/somador1bit.vhd Line: 13
+    Info (12023): Found entity 1: somador1bit File: C:/DESCOMP/MIPS_CICLO_UNICO/somador1bit.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file somaconstante.vhd
+    Info (12022): Found design unit 1: somaConstante-comportamento File: C:/DESCOMP/MIPS_CICLO_UNICO/somaConstante.vhd Line: 19
+    Info (12023): Found entity 1: somaConstante File: C:/DESCOMP/MIPS_CICLO_UNICO/somaConstante.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file shiftleft2.vhd
+    Info (12022): Found design unit 1: shiftLeft2-comportamento File: C:/DESCOMP/MIPS_CICLO_UNICO/shiftLeft2.vhd Line: 10
+    Info (12023): Found entity 1: shiftLeft2 File: C:/DESCOMP/MIPS_CICLO_UNICO/shiftLeft2.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file registradorgenerico.vhd
+    Info (12022): Found design unit 1: registradorGenerico-comportamento File: C:/DESCOMP/MIPS_CICLO_UNICO/registradorGenerico.vhd Line: 15
+    Info (12023): Found entity 1: registradorGenerico File: C:/DESCOMP/MIPS_CICLO_UNICO/registradorGenerico.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file rammips.vhd
+    Info (12022): Found design unit 1: RAMMIPS-assincrona File: C:/DESCOMP/MIPS_CICLO_UNICO/RAMMIPS.vhd Line: 18
+    Info (12023): Found entity 1: RAMMIPS File: C:/DESCOMP/MIPS_CICLO_UNICO/RAMMIPS.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file operadorxor.vhd
+    Info (12022): Found design unit 1: operadorXOR-comportamento File: C:/DESCOMP/MIPS_CICLO_UNICO/operadorXOR.vhd Line: 10
+    Info (12023): Found entity 1: operadorXOR File: C:/DESCOMP/MIPS_CICLO_UNICO/operadorXOR.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file operadoror.vhd
+    Info (12022): Found design unit 1: operadorOR-comportamento File: C:/DESCOMP/MIPS_CICLO_UNICO/operadorOR.vhd Line: 10
+    Info (12023): Found entity 1: operadorOR File: C:/DESCOMP/MIPS_CICLO_UNICO/operadorOR.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file operadornot.vhd
+    Info (12022): Found design unit 1: operadorNOT-comportamento File: C:/DESCOMP/MIPS_CICLO_UNICO/operadorNOT.vhd Line: 10
+    Info (12023): Found entity 1: operadorNOT File: C:/DESCOMP/MIPS_CICLO_UNICO/operadorNOT.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file operadorand2x1.vhd
+    Info (12022): Found design unit 1: operadorAND2x1-comportamento File: C:/DESCOMP/MIPS_CICLO_UNICO/operadorAND2x1.vhd Line: 10
+    Info (12023): Found entity 1: operadorAND2x1 File: C:/DESCOMP/MIPS_CICLO_UNICO/operadorAND2x1.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file operadorand.vhd
+    Info (12022): Found design unit 1: operadorAND-comportamento File: C:/DESCOMP/MIPS_CICLO_UNICO/operadorAND.vhd Line: 10
+    Info (12023): Found entity 1: operadorAND File: C:/DESCOMP/MIPS_CICLO_UNICO/operadorAND.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file muxgenerico4x1.vhd
+    Info (12022): Found design unit 1: muxGenerico4x1-Behavioral File: C:/DESCOMP/MIPS_CICLO_UNICO/muxGenerico4x1.vhd Line: 15
+    Info (12023): Found entity 1: muxGenerico4x1 File: C:/DESCOMP/MIPS_CICLO_UNICO/muxGenerico4x1.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file muxgenerico2x1.vhd
+    Info (12022): Found design unit 1: muxGenerico2x1-comportamento File: C:/DESCOMP/MIPS_CICLO_UNICO/muxGenerico2x1.vhd Line: 14
+    Info (12023): Found entity 1: muxGenerico2x1 File: C:/DESCOMP/MIPS_CICLO_UNICO/muxGenerico2x1.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file mipsciclounico.vhd
+    Info (12022): Found design unit 1: MipsCicloUnico-arquitetura File: C:/DESCOMP/MIPS_CICLO_UNICO/MipsCicloUnico.vhd Line: 28
+    Info (12023): Found entity 1: MipsCicloUnico File: C:/DESCOMP/MIPS_CICLO_UNICO/MipsCicloUnico.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file estendesinalgenerico.vhd
+    Info (12022): Found design unit 1: estendeSinalGenerico-comportamento File: C:/DESCOMP/MIPS_CICLO_UNICO/estendeSinalGenerico.vhd Line: 20
+    Info (12023): Found entity 1: estendeSinalGenerico File: C:/DESCOMP/MIPS_CICLO_UNICO/estendeSinalGenerico.vhd Line: 4
+Info (12021): Found 3 design units, including 1 entities, in source file edgedetector.vhd
+    Info (12022): Found design unit 1: edgeDetector-bordaSubida File: C:/DESCOMP/MIPS_CICLO_UNICO/edgeDetector.vhd Line: 10
+    Info (12022): Found design unit 2: edgeDetector-bordaDescida File: C:/DESCOMP/MIPS_CICLO_UNICO/edgeDetector.vhd Line: 23
+    Info (12023): Found entity 1: edgeDetector File: C:/DESCOMP/MIPS_CICLO_UNICO/edgeDetector.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file concatenajmp.vhd
+    Info (12022): Found design unit 1: concatenaJMP-comportamento File: C:/DESCOMP/MIPS_CICLO_UNICO/concatenaJMP.vhd Line: 11
+    Info (12023): Found entity 1: concatenaJMP File: C:/DESCOMP/MIPS_CICLO_UNICO/concatenaJMP.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file bancoreg.vhd
+    Info (12022): Found design unit 1: bancoReg-comportamento File: C:/DESCOMP/MIPS_CICLO_UNICO/bancoReg.vhd Line: 28
+    Info (12023): Found entity 1: bancoReg File: C:/DESCOMP/MIPS_CICLO_UNICO/bancoReg.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file muxgenerico2x1bit.vhd
+    Info (12022): Found design unit 1: muxGenerico2x1bit-comportamento File: C:/DESCOMP/MIPS_CICLO_UNICO/muxGenerico2x1bit.vhd Line: 13
+    Info (12023): Found entity 1: muxGenerico2x1bit File: C:/DESCOMP/MIPS_CICLO_UNICO/muxGenerico2x1bit.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file ulactrl.vhd
+    Info (12022): Found design unit 1: ULActrl-comportamento File: C:/DESCOMP/MIPS_CICLO_UNICO/ULActrl.vhd Line: 14
+    Info (12023): Found entity 1: ULActrl File: C:/DESCOMP/MIPS_CICLO_UNICO/ULActrl.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file unidadecontrole.vhd
+    Info (12022): Found design unit 1: UnidadeControle-comportamento File: C:/DESCOMP/MIPS_CICLO_UNICO/UnidadeControle.vhd Line: 26
+    Info (12023): Found entity 1: UnidadeControle File: C:/DESCOMP/MIPS_CICLO_UNICO/UnidadeControle.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file conversorhex7seg.vhd
+    Info (12022): Found design unit 1: conversorHex7Seg-comportamento File: C:/DESCOMP/MIPS_CICLO_UNICO/conversorHex7Seg.vhd Line: 17
+    Info (12023): Found entity 1: conversorHex7Seg File: C:/DESCOMP/MIPS_CICLO_UNICO/conversorHex7Seg.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file muxgenerico4x1bit.vhd
+    Info (12022): Found design unit 1: muxGenerico4x1bit-Behavioral File: C:/DESCOMP/MIPS_CICLO_UNICO/muxGenerico4x1bit.vhd Line: 14
+    Info (12023): Found entity 1: muxGenerico4x1bit File: C:/DESCOMP/MIPS_CICLO_UNICO/muxGenerico4x1bit.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file estendelui.vhd
+    Info (12022): Found design unit 1: estendeLUI-comportamento File: C:/DESCOMP/MIPS_CICLO_UNICO/estendeLUI.vhd Line: 19
+    Info (12023): Found entity 1: estendeLUI File: C:/DESCOMP/MIPS_CICLO_UNICO/estendeLUI.vhd Line: 4
+Info (12127): Elaborating entity "MipsCicloUnico" for the top level hierarchy
+Warning (10873): Using initial value X (don't care) for net "LEDR[9]" at MipsCicloUnico.vhd(14) File: C:/DESCOMP/MIPS_CICLO_UNICO/MipsCicloUnico.vhd Line: 14
+Info (12129): Elaborating entity "edgeDetector" using architecture "A:bordasubida" for hierarchy "edgeDetector:\gravar:detectorSub0" File: C:/DESCOMP/MIPS_CICLO_UNICO/MipsCicloUnico.vhd Line: 103
+Info (12128): Elaborating entity "registradorGenerico" for hierarchy "registradorGenerico:PC" File: C:/DESCOMP/MIPS_CICLO_UNICO/MipsCicloUnico.vhd Line: 108
+Info (12128): Elaborating entity "somaConstante" for hierarchy "somaConstante:incrementaPC" File: C:/DESCOMP/MIPS_CICLO_UNICO/MipsCicloUnico.vhd Line: 111
+Info (12128): Elaborating entity "ROMMIPS" for hierarchy "ROMMIPS:ROM" File: C:/DESCOMP/MIPS_CICLO_UNICO/MipsCicloUnico.vhd Line: 116
+Warning (10541): VHDL Signal Declaration warning at ROMMIPS.vhd(18): used implicit default value for signal "memROM" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/DESCOMP/MIPS_CICLO_UNICO/ROMMIPS.vhd Line: 18
+Info (12128): Elaborating entity "UnidadeControle" for hierarchy "UnidadeControle:Unidade_Controle" File: C:/DESCOMP/MIPS_CICLO_UNICO/MipsCicloUnico.vhd Line: 119
+Info (12128): Elaborating entity "ULActrl" for hierarchy "ULActrl:Controle_ULA1" File: C:/DESCOMP/MIPS_CICLO_UNICO/MipsCicloUnico.vhd Line: 135
+Info (12128): Elaborating entity "muxGenerico2x1" for hierarchy "ULActrl:Controle_ULA1|muxGenerico2x1:Mux_Rt_Rd" File: C:/DESCOMP/MIPS_CICLO_UNICO/ULActrl.vhd Line: 46
+Info (12128): Elaborating entity "muxGenerico4x1" for hierarchy "muxGenerico4x1:Mux_Rt_Rd_31" File: C:/DESCOMP/MIPS_CICLO_UNICO/MipsCicloUnico.vhd Line: 142
+Info (12128): Elaborating entity "bancoReg" for hierarchy "bancoReg:bancoRegs" File: C:/DESCOMP/MIPS_CICLO_UNICO/MipsCicloUnico.vhd Line: 150
+Info (12128): Elaborating entity "muxGenerico2x1" for hierarchy "muxGenerico2x1:Mux_Rt_Imediato" File: C:/DESCOMP/MIPS_CICLO_UNICO/MipsCicloUnico.vhd Line: 160
+Info (12128): Elaborating entity "ULAMIPS" for hierarchy "ULAMIPS:ULA" File: C:/DESCOMP/MIPS_CICLO_UNICO/MipsCicloUnico.vhd Line: 167
+Info (12128): Elaborating entity "ULAMIPS1bit" for hierarchy "ULAMIPS:ULA|ULAMIPS1bit:BIT0" File: C:/DESCOMP/MIPS_CICLO_UNICO/ULAMIPS.vhd Line: 61
+Info (12128): Elaborating entity "operadorNOT" for hierarchy "ULAMIPS:ULA|ULAMIPS1bit:BIT0|operadorNOT:NOT1" File: C:/DESCOMP/MIPS_CICLO_UNICO/ULAMIPS1bit.vhd Line: 26
+Info (12128): Elaborating entity "muxGenerico2x1bit" for hierarchy "ULAMIPS:ULA|ULAMIPS1bit:BIT0|muxGenerico2x1bit:MUX_SUB" File: C:/DESCOMP/MIPS_CICLO_UNICO/ULAMIPS1bit.vhd Line: 29
+Info (12128): Elaborating entity "operadorAND" for hierarchy "ULAMIPS:ULA|ULAMIPS1bit:BIT0|operadorAND:AND1" File: C:/DESCOMP/MIPS_CICLO_UNICO/ULAMIPS1bit.vhd Line: 35
+Info (12128): Elaborating entity "operadorOR" for hierarchy "ULAMIPS:ULA|ULAMIPS1bit:BIT0|operadorOR:OR1" File: C:/DESCOMP/MIPS_CICLO_UNICO/ULAMIPS1bit.vhd Line: 38
+Info (12128): Elaborating entity "somador1bit" for hierarchy "ULAMIPS:ULA|ULAMIPS1bit:BIT0|somador1bit:SOMADOR" File: C:/DESCOMP/MIPS_CICLO_UNICO/ULAMIPS1bit.vhd Line: 41
+Info (12128): Elaborating entity "operadorXOR" for hierarchy "ULAMIPS:ULA|ULAMIPS1bit:BIT0|somador1bit:SOMADOR|operadorXOR:XOR1" File: C:/DESCOMP/MIPS_CICLO_UNICO/somador1bit.vhd Line: 24
+Info (12128): Elaborating entity "muxGenerico4x1bit" for hierarchy "ULAMIPS:ULA|ULAMIPS1bit:BIT0|muxGenerico4x1bit:MUX_ULAout" File: C:/DESCOMP/MIPS_CICLO_UNICO/ULAMIPS1bit.vhd Line: 44
+Info (12128): Elaborating entity "ULAMIPSbit31" for hierarchy "ULAMIPS:ULA|ULAMIPSbit31:BIT31" File: C:/DESCOMP/MIPS_CICLO_UNICO/ULAMIPS.vhd Line: 123
+Info (12128): Elaborating entity "RAMMIPS" for hierarchy "RAMMIPS:RAM" File: C:/DESCOMP/MIPS_CICLO_UNICO/MipsCicloUnico.vhd Line: 175
+Info (12128): Elaborating entity "estendeSinalGenerico" for hierarchy "estendeSinalGenerico:estendeSinal" File: C:/DESCOMP/MIPS_CICLO_UNICO/MipsCicloUnico.vhd Line: 185
+Info (12128): Elaborating entity "estendeLUI" for hierarchy "estendeLUI:estendeLUI1" File: C:/DESCOMP/MIPS_CICLO_UNICO/MipsCicloUnico.vhd Line: 188
+Info (12128): Elaborating entity "muxGenerico4x1" for hierarchy "muxGenerico4x1:Mux_ULA_RAM_LUI" File: C:/DESCOMP/MIPS_CICLO_UNICO/MipsCicloUnico.vhd Line: 191
+Info (12128): Elaborating entity "operadorAND2x1" for hierarchy "operadorAND2x1:opANDBEQ" File: C:/DESCOMP/MIPS_CICLO_UNICO/MipsCicloUnico.vhd Line: 208
+Info (12128): Elaborating entity "shiftLeft2" for hierarchy "shiftLeft2:Imediato_shift" File: C:/DESCOMP/MIPS_CICLO_UNICO/MipsCicloUnico.vhd Line: 211
+Info (12128): Elaborating entity "somadorGenerico" for hierarchy "somadorGenerico:somadorBrAdd" File: C:/DESCOMP/MIPS_CICLO_UNICO/MipsCicloUnico.vhd Line: 214
+Info (12128): Elaborating entity "concatenaJMP" for hierarchy "concatenaJMP:endJMP" File: C:/DESCOMP/MIPS_CICLO_UNICO/MipsCicloUnico.vhd Line: 223
+Info (12128): Elaborating entity "conversorHex7Seg" for hierarchy "conversorHex7Seg:Decod7seg_HEX0" File: C:/DESCOMP/MIPS_CICLO_UNICO/MipsCicloUnico.vhd Line: 249
+Info (276014): Found 3 instances of uninferred RAM logic
+    Info (276007): RAM logic "RAMMIPS:RAM|memRAM" is uninferred due to asynchronous read logic File: C:/DESCOMP/MIPS_CICLO_UNICO/RAMMIPS.vhd Line: 21
+    Info (276007): RAM logic "bancoReg:bancoRegs|registrador" is uninferred due to asynchronous read logic File: C:/DESCOMP/MIPS_CICLO_UNICO/bancoReg.vhd Line: 48
+    Info (276004): RAM logic "ROMMIPS:ROM|memROM" is uninferred due to inappropriate RAM size File: C:/DESCOMP/MIPS_CICLO_UNICO/ROMMIPS.vhd Line: 18
+Warning (113028): 46 out of 64 addresses are uninitialized. The Quartus Prime software will initialize them to "0". There are 3 warnings found, and 3 warnings are reported. File: C:/DESCOMP/MIPS_CICLO_UNICO/ROMMIPS_content.mif Line: 1
+    Warning (113026): Memory Initialization File Address 16 is not initialized File: C:/DESCOMP/MIPS_CICLO_UNICO/ROMMIPS_content.mif Line: 1
+    Warning (113027): Addresses ranging from 18 to 30 are not initialized File: C:/DESCOMP/MIPS_CICLO_UNICO/ROMMIPS_content.mif Line: 1
+    Warning (113027): Addresses ranging from 32 to 63 are not initialized File: C:/DESCOMP/MIPS_CICLO_UNICO/ROMMIPS_content.mif Line: 1
+Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
+    Warning (13049): Converted tri-state buffer "RAMMIPS:RAM|Dado_out[12]" feeding internal logic into a wire File: C:/DESCOMP/MIPS_CICLO_UNICO/RAMMIPS.vhd Line: 13
+    Warning (13049): Converted tri-state buffer "RAMMIPS:RAM|Dado_out[11]" feeding internal logic into a wire File: C:/DESCOMP/MIPS_CICLO_UNICO/RAMMIPS.vhd Line: 13
+    Warning (13049): Converted tri-state buffer "RAMMIPS:RAM|Dado_out[10]" feeding internal logic into a wire File: C:/DESCOMP/MIPS_CICLO_UNICO/RAMMIPS.vhd Line: 13
+    Warning (13049): Converted tri-state buffer "RAMMIPS:RAM|Dado_out[9]" feeding internal logic into a wire File: C:/DESCOMP/MIPS_CICLO_UNICO/RAMMIPS.vhd Line: 13
+    Warning (13049): Converted tri-state buffer "RAMMIPS:RAM|Dado_out[8]" feeding internal logic into a wire File: C:/DESCOMP/MIPS_CICLO_UNICO/RAMMIPS.vhd Line: 13
+    Warning (13049): Converted tri-state buffer "RAMMIPS:RAM|Dado_out[7]" feeding internal logic into a wire File: C:/DESCOMP/MIPS_CICLO_UNICO/RAMMIPS.vhd Line: 13
+    Warning (13049): Converted tri-state buffer "RAMMIPS:RAM|Dado_out[6]" feeding internal logic into a wire File: C:/DESCOMP/MIPS_CICLO_UNICO/RAMMIPS.vhd Line: 13
+    Warning (13049): Converted tri-state buffer "RAMMIPS:RAM|Dado_out[5]" feeding internal logic into a wire File: C:/DESCOMP/MIPS_CICLO_UNICO/RAMMIPS.vhd Line: 13
+    Warning (13049): Converted tri-state buffer "RAMMIPS:RAM|Dado_out[4]" feeding internal logic into a wire File: C:/DESCOMP/MIPS_CICLO_UNICO/RAMMIPS.vhd Line: 13
+    Warning (13049): Converted tri-state buffer "RAMMIPS:RAM|Dado_out[3]" feeding internal logic into a wire File: C:/DESCOMP/MIPS_CICLO_UNICO/RAMMIPS.vhd Line: 13
+    Warning (13049): Converted tri-state buffer "RAMMIPS:RAM|Dado_out[2]" feeding internal logic into a wire File: C:/DESCOMP/MIPS_CICLO_UNICO/RAMMIPS.vhd Line: 13
+    Warning (13049): Converted tri-state buffer "RAMMIPS:RAM|Dado_out[1]" feeding internal logic into a wire File: C:/DESCOMP/MIPS_CICLO_UNICO/RAMMIPS.vhd Line: 13
+    Warning (13049): Converted tri-state buffer "RAMMIPS:RAM|Dado_out[0]" feeding internal logic into a wire File: C:/DESCOMP/MIPS_CICLO_UNICO/RAMMIPS.vhd Line: 13
+    Warning (13049): Converted tri-state buffer "RAMMIPS:RAM|Dado_out[13]" feeding internal logic into a wire File: C:/DESCOMP/MIPS_CICLO_UNICO/RAMMIPS.vhd Line: 13
+    Warning (13049): Converted tri-state buffer "RAMMIPS:RAM|Dado_out[14]" feeding internal logic into a wire File: C:/DESCOMP/MIPS_CICLO_UNICO/RAMMIPS.vhd Line: 13
+    Warning (13049): Converted tri-state buffer "RAMMIPS:RAM|Dado_out[15]" feeding internal logic into a wire File: C:/DESCOMP/MIPS_CICLO_UNICO/RAMMIPS.vhd Line: 13
+    Warning (13049): Converted tri-state buffer "RAMMIPS:RAM|Dado_out[16]" feeding internal logic into a wire File: C:/DESCOMP/MIPS_CICLO_UNICO/RAMMIPS.vhd Line: 13
+    Warning (13049): Converted tri-state buffer "RAMMIPS:RAM|Dado_out[17]" feeding internal logic into a wire File: C:/DESCOMP/MIPS_CICLO_UNICO/RAMMIPS.vhd Line: 13
+    Warning (13049): Converted tri-state buffer "RAMMIPS:RAM|Dado_out[18]" feeding internal logic into a wire File: C:/DESCOMP/MIPS_CICLO_UNICO/RAMMIPS.vhd Line: 13
+    Warning (13049): Converted tri-state buffer "RAMMIPS:RAM|Dado_out[19]" feeding internal logic into a wire File: C:/DESCOMP/MIPS_CICLO_UNICO/RAMMIPS.vhd Line: 13
+    Warning (13049): Converted tri-state buffer "RAMMIPS:RAM|Dado_out[20]" feeding internal logic into a wire File: C:/DESCOMP/MIPS_CICLO_UNICO/RAMMIPS.vhd Line: 13
+    Warning (13049): Converted tri-state buffer "RAMMIPS:RAM|Dado_out[21]" feeding internal logic into a wire File: C:/DESCOMP/MIPS_CICLO_UNICO/RAMMIPS.vhd Line: 13
+    Warning (13049): Converted tri-state buffer "RAMMIPS:RAM|Dado_out[22]" feeding internal logic into a wire File: C:/DESCOMP/MIPS_CICLO_UNICO/RAMMIPS.vhd Line: 13
+    Warning (13049): Converted tri-state buffer "RAMMIPS:RAM|Dado_out[23]" feeding internal logic into a wire File: C:/DESCOMP/MIPS_CICLO_UNICO/RAMMIPS.vhd Line: 13
+    Warning (13049): Converted tri-state buffer "RAMMIPS:RAM|Dado_out[24]" feeding internal logic into a wire File: C:/DESCOMP/MIPS_CICLO_UNICO/RAMMIPS.vhd Line: 13
+    Warning (13049): Converted tri-state buffer "RAMMIPS:RAM|Dado_out[25]" feeding internal logic into a wire File: C:/DESCOMP/MIPS_CICLO_UNICO/RAMMIPS.vhd Line: 13
+    Warning (13049): Converted tri-state buffer "RAMMIPS:RAM|Dado_out[26]" feeding internal logic into a wire File: C:/DESCOMP/MIPS_CICLO_UNICO/RAMMIPS.vhd Line: 13
+    Warning (13049): Converted tri-state buffer "RAMMIPS:RAM|Dado_out[27]" feeding internal logic into a wire File: C:/DESCOMP/MIPS_CICLO_UNICO/RAMMIPS.vhd Line: 13
+    Warning (13049): Converted tri-state buffer "RAMMIPS:RAM|Dado_out[28]" feeding internal logic into a wire File: C:/DESCOMP/MIPS_CICLO_UNICO/RAMMIPS.vhd Line: 13
+    Warning (13049): Converted tri-state buffer "RAMMIPS:RAM|Dado_out[29]" feeding internal logic into a wire File: C:/DESCOMP/MIPS_CICLO_UNICO/RAMMIPS.vhd Line: 13
+    Warning (13049): Converted tri-state buffer "RAMMIPS:RAM|Dado_out[30]" feeding internal logic into a wire File: C:/DESCOMP/MIPS_CICLO_UNICO/RAMMIPS.vhd Line: 13
+    Warning (13049): Converted tri-state buffer "RAMMIPS:RAM|Dado_out[31]" feeding internal logic into a wire File: C:/DESCOMP/MIPS_CICLO_UNICO/RAMMIPS.vhd Line: 13
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "LEDR[9]" is stuck at GND File: C:/DESCOMP/MIPS_CICLO_UNICO/MipsCicloUnico.vhd Line: 14
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 12 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "KEY[1]" File: C:/DESCOMP/MIPS_CICLO_UNICO/MipsCicloUnico.vhd Line: 12
+    Warning (15610): No output dependent on input pin "KEY[2]" File: C:/DESCOMP/MIPS_CICLO_UNICO/MipsCicloUnico.vhd Line: 12
+    Warning (15610): No output dependent on input pin "KEY[3]" File: C:/DESCOMP/MIPS_CICLO_UNICO/MipsCicloUnico.vhd Line: 12
+    Warning (15610): No output dependent on input pin "SW[1]" File: C:/DESCOMP/MIPS_CICLO_UNICO/MipsCicloUnico.vhd Line: 21
+    Warning (15610): No output dependent on input pin "SW[2]" File: C:/DESCOMP/MIPS_CICLO_UNICO/MipsCicloUnico.vhd Line: 21
+    Warning (15610): No output dependent on input pin "SW[3]" File: C:/DESCOMP/MIPS_CICLO_UNICO/MipsCicloUnico.vhd Line: 21
+    Warning (15610): No output dependent on input pin "SW[4]" File: C:/DESCOMP/MIPS_CICLO_UNICO/MipsCicloUnico.vhd Line: 21
+    Warning (15610): No output dependent on input pin "SW[5]" File: C:/DESCOMP/MIPS_CICLO_UNICO/MipsCicloUnico.vhd Line: 21
+    Warning (15610): No output dependent on input pin "SW[6]" File: C:/DESCOMP/MIPS_CICLO_UNICO/MipsCicloUnico.vhd Line: 21
+    Warning (15610): No output dependent on input pin "SW[7]" File: C:/DESCOMP/MIPS_CICLO_UNICO/MipsCicloUnico.vhd Line: 21
+    Warning (15610): No output dependent on input pin "SW[8]" File: C:/DESCOMP/MIPS_CICLO_UNICO/MipsCicloUnico.vhd Line: 21
+    Warning (15610): No output dependent on input pin "SW[9]" File: C:/DESCOMP/MIPS_CICLO_UNICO/MipsCicloUnico.vhd Line: 21
+Info (21057): Implemented 4645 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 15 input pins
+    Info (21059): Implemented 52 output pins
+    Info (21061): Implemented 4578 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 54 warnings
+    Info: Peak virtual memory: 4855 megabytes
+    Info: Processing ended: Sat May 18 14:39:11 2024
+    Info: Elapsed time: 00:00:16
+    Info: Total CPU time (on all processors): 00:00:26
+
+

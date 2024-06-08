@@ -1,0 +1,38 @@
+Quartus Prime Archive log --	C:/DESCOMP/CONTADOR/Contador.qarlog
+
+Archive:	C:/DESCOMP/CONTADOR/Contador.qar
+Date:		Mon Apr 22 22:59:31 2024
+Quartus Prime		20.1.0 Build 711 06/05/2020 SJ Lite Edition
+
+	=========== Files Selected: ===========
+C:/DESCOMP/CONTADOR/Contador.qpf
+C:/DESCOMP/CONTADOR/Contador.qsf
+C:/DESCOMP/CONTADOR/Contador.vhd
+C:/DESCOMP/CONTADOR/FlipFlop.vhd
+C:/DESCOMP/CONTADOR/Processador.vhd
+C:/DESCOMP/CONTADOR/ULASomaSub.vhd
+C:/DESCOMP/CONTADOR/bancoRegistradoresArqRegMem.vhd
+C:/DESCOMP/CONTADOR/buffer_3_state.vhd
+C:/DESCOMP/CONTADOR/buffer_3_state_8portas.vhd
+C:/DESCOMP/CONTADOR/conversorHex7Seg.vhd
+C:/DESCOMP/CONTADOR/decoder3x8.vhd
+C:/DESCOMP/CONTADOR/decoderInstru.vhd
+C:/DESCOMP/CONTADOR/divisorGenerico.vhd
+C:/DESCOMP/CONTADOR/divisorGenerico_e_Interface.vhd
+C:/DESCOMP/CONTADOR/edgeDetector.vhd
+C:/DESCOMP/CONTADOR/logicaDesvio.vhd
+C:/DESCOMP/CONTADOR/memoriaRAM.vhd
+C:/DESCOMP/CONTADOR/memoriaROM.vhd
+C:/DESCOMP/CONTADOR/muxGenerico2x1.vhd
+C:/DESCOMP/CONTADOR/muxGenerico2x1_1bit.vhd
+C:/DESCOMP/CONTADOR/muxGenerico4x1.vhd
+C:/DESCOMP/CONTADOR/operadorAND4x1.vhd
+C:/DESCOMP/CONTADOR/output_files/Waveform.vwf
+C:/DESCOMP/CONTADOR/registradorGenerico.vhd
+C:/DESCOMP/CONTADOR/registradorGenerico4bits.vhd
+C:/DESCOMP/CONTADOR/somaConstante.vhd
+c:/intelfpga_lite/20.1/quartus/bin64/assignment_defaults.qdf
+	======= Total: 27 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.

@@ -1,0 +1,253 @@
+-- Copyright (C) 2017  Intel Corporation. All rights reserved.
+-- Your use of Intel Corporation's design tools, logic functions
+-- and other software and tools, and its AMPP partner logic
+-- functions, and any output files from any of the foregoing
+-- (including device programming or simulation files), and any
+-- associated documentation or information are expressly subject
+-- to the terms and conditions of the Intel Program License
+-- Subscription Agreement, the Intel Quartus Prime License Agreement,
+-- the Intel FPGA IP License Agreement, or other applicable license
+-- agreement, including, without limitation, that your use is for
+-- the sole purpose of programming logic devices manufactured by
+-- Intel and sold by Intel or its authorized distributors.  Please
+-- refer to the applicable agreement for further details.
+
+WIDTH=8;
+DEPTH=256;
+ADDRESS_RADIX=DEC;
+DATA_RADIX=HEX;
+
+CONTENT BEGIN
+--endereco : dado;
+0 : 4 & '0' & 00 & 01; -- LDI $0, R1 
+1 : 5 & '0' & 00 & 01; -- STA @0, R1 
+2 : 5 & '1' & FC & 01; -- STA @508, R1 
+3 : 5 & '1' & FE & 01; -- STA @510, R1 
+4 : 5 & '0' & 02 & 01; -- STA @2, R1 
+5 : 5 & '0' & 03 & 01; -- STA @3, R1 
+6 : 5 & '0' & 04 & 01; -- STA @4, R1 
+7 : 5 & '0' & 05 & 01; -- STA @5, R1 
+8 : 5 & '0' & 06 & 01; -- STA @6, R1 
+9 : 5 & '0' & 07 & 01; -- STA @7, R1 
+10 : 5 & '0' & 17 & 01; -- STA @23, R1 
+11 : 5 & '1' & 20 & 01; -- STA @288, R1 
+12 : 5 & '1' & 21 & 01; -- STA @289, R1 
+13 : 5 & '1' & 22 & 01; -- STA @290, R1 
+14 : 5 & '1' & 23 & 01; -- STA @291, R1 
+15 : 5 & '1' & 24 & 01; -- STA @292, R1 
+16 : 5 & '1' & 25 & 01; -- STA @293, R1 
+17 : 5 & '1' & 01 & 01; -- STA @257, R1 
+18 : 0 & '0' & 00 & 00; -- NOP 
+19 : 4 & '0' & 01 & 01; -- LDI $1, R1 
+20 : 5 & '0' & 01 & 01; -- STA @1, R1 
+21 : 4 & '0' & 02 & 01; -- LDI $2, R1 
+22 : 5 & '0' & 20 & 01; -- STA @32, R1 
+23 : 4 & '0' & 03 & 01; -- LDI $3, R1 
+24 : 5 & '0' & 21 & 01; -- STA @33, R1 
+25 : 4 & '0' & 04 & 01; -- LDI $4, R1 
+26 : 5 & '0' & 22 & 01; -- STA @34, R1 
+27 : 4 & '0' & 05 & 01; -- LDI $5, R1 
+28 : 5 & '0' & 23 & 01; -- STA @35, R1 
+29 : 4 & '0' & 06 & 01; -- LDI $6, R1 
+30 : 5 & '0' & 24 & 01; -- STA @36, R1 
+31 : 4 & '0' & 09 & 01; -- LDI $9, R1 
+32 : 5 & '0' & 09 & 01; -- STA @9, R1 
+33 : 4 & '0' & 0A & 01; -- LDI $10, R1 
+34 : 5 & '0' & 0A & 01; -- STA @10, R1 
+35 : 1 & '1' & 61 & 00; -- LDA @353 
+36 : D & '0' & 01 & 00; -- AND @1 
+37 : 8 & '0' & 00 & 00; -- CEQ @0 
+38 : 7 & '0' & 29 & 00; -- JEQ .LOOP_TEMPO 
+39 : 9 & '0' & 88 & 00; -- JSR .DEFINEHORARIO 
+40 : 0 & '0' & 00 & 00; -- NOP 
+41 : 1 & '1' & 65 & 00; -- LDA @357 
+42 : D & '0' & 01 & 00; -- AND @1 
+43 : 8 & '0' & 00 & 00; -- CEQ @0 
+44 : 7 & '0' & 23 & 00; -- JEQ .LOOPPRINCIPAL 
+45 : 9 & '0' & 30 & 00; -- JSR .INCREMENTATEMPO 
+46 : 0 & '0' & 00 & 00; -- NOP 
+47 : 6 & '0' & 23 & 00; -- JMP .LOOPPRINCIPAL 
+48 : 5 & '1' & FC & 00; -- STA @508 
+49 : 1 & '0' & 02 & 00; -- LDA @2 
+50 : 8 & '0' & 09 & 00; -- CEQ @9 
+51 : 7 & '0' & 35 & 00; -- JEQ .unidadeenove 
+52 : 6 & '0' & 39 & 00; -- JMP .unidadenaoenove 
+53 : 4 & '0' & 00 & 00; -- LDI $0 
+54 : 5 & '0' & 02 & 00; -- STA @2 
+55 : 5 & '1' & 20 & 00; -- STA @288 
+56 : 6 & '0' & 3E & 00; -- JMP .checadezena 
+57 : 1 & '0' & 02 & 00; -- LDA @2 
+58 : 2 & '0' & 01 & 00; -- SOMA @1 
+59 : 5 & '0' & 02 & 00; -- STA @2 
+60 : 5 & '1' & 20 & 00; -- STA @288 
+61 : 6 & '0' & 87 & 00; -- JMP .reornaincreenaTeo 
+62 : 1 & '0' & 03 & 00; -- LDA @3 
+63 : 8 & '0' & 23 & 00; -- CEQ @35 
+64 : 7 & '0' & 42 & 00; -- JEQ .dezenae5 
+65 : 6 & '0' & 46 & 00; -- JMP .dezenanaoe5 
+66 : 4 & '0' & 00 & 00; -- LDI $0 
+67 : 5 & '0' & 03 & 00; -- STA @3 
+68 : 5 & '1' & 21 & 00; -- STA @289 
+69 : 6 & '0' & 4B & 00; -- JMP .checacenena 
+70 : 1 & '0' & 03 & 00; -- LDA @3 
+71 : 2 & '0' & 01 & 00; -- SOMA @1 
+72 : 5 & '0' & 03 & 00; -- STA @3 
+73 : 5 & '1' & 21 & 00; -- STA @289 
+74 : 6 & '0' & 87 & 00; -- JMP .reornaincreenaTeo 
+75 : 1 & '0' & 04 & 00; -- LDA @4 
+76 : 8 & '0' & 09 & 00; -- CEQ @9 
+77 : 7 & '0' & 4F & 00; -- JEQ .cenenae9 
+78 : 6 & '0' & 53 & 00; -- JMP .cenenanaoe9 
+79 : 4 & '0' & 00 & 00; -- LDI $0 
+80 : 5 & '0' & 04 & 00; -- STA @4 
+81 : 5 & '1' & 22 & 00; -- STA @290 
+82 : 6 & '0' & 58 & 00; -- JMP .checailhar 
+83 : 1 & '0' & 04 & 00; -- LDA @4 
+84 : 2 & '0' & 01 & 00; -- SOMA @1 
+85 : 5 & '0' & 04 & 00; -- STA @4  
+86 : 5 & '1' & 22 & 00; -- STA @290 
+87 : 6 & '0' & 87 & 00; -- JMP .reornaincreenaTeo 
+88 : 1 & '0' & 05 & 00; -- LDA @5 
+89 : 8 & '0' & 23 & 00; -- CEQ @35 
+90 : 7 & '0' & 5C & 00; -- JEQ .ilhare5 
+91 : 6 & '0' & 60 & 00; -- JMP .ilharnaoe5 
+92 : 4 & '0' & 00 & 00; -- LDI $0 
+93 : 5 & '0' & 05 & 00; -- STA @5 
+94 : 5 & '1' & 23 & 00; -- STA @291 
+95 : 6 & '0' & 65 & 00; -- JMP .checadzilhar 
+96 : 1 & '0' & 05 & 00; -- LDA @5 
+97 : 2 & '0' & 01 & 00; -- SOMA @1 
+98 : 5 & '0' & 05 & 00; -- STA @5 
+99 : 5 & '1' & 23 & 00; -- STA @291 
+100 : 6 & '0' & 87 & 00; -- JMP .reornaincreenaTeo 
+101 : 1 & '0' & 07 & 00; -- LDA @7 
+102 : B & '0' & 20 & 00; -- CLT @32 
+103 : C & '0' & 69 & 00; -- JLT .aindanaoe2 
+104 : 6 & '0' & 6D & 00; -- JMP .jae2 
+105 : 1 & '0' & 06 & 00; -- LDA @6 
+106 : 8 & '0' & 09 & 00; -- CEQ @9 
+107 : 7 & '0' & 71 & 00; -- JEQ .dzilhare9ou3 
+108 : 6 & '0' & 75 & 00; -- JMP .dzilharnaoe9ou3 
+109 : 1 & '0' & 06 & 00; -- LDA @6 
+110 : 8 & '0' & 21 & 00; -- CEQ @33 
+111 : 7 & '0' & 71 & 00; -- JEQ .dzilhare9ou3 
+112 : 6 & '0' & 75 & 00; -- JMP .dzilharnaoe9ou3 
+113 : 4 & '0' & 00 & 00; -- LDI $0 
+114 : 5 & '0' & 06 & 00; -- STA @6 
+115 : 5 & '1' & 24 & 00; -- STA @292 
+116 : 6 & '0' & 7A & 00; -- JMP .checacilhar 
+117 : 1 & '0' & 06 & 00; -- LDA @6 
+118 : 2 & '0' & 01 & 00; -- SOMA @1 
+119 : 5 & '0' & 06 & 00; -- STA @6 
+120 : 5 & '1' & 24 & 00; -- STA @292 
+121 : 6 & '0' & 87 & 00; -- JMP .reornaincreenaTeo 
+122 : 1 & '0' & 07 & 00; -- LDA @7 
+123 : 8 & '0' & 20 & 00; -- CEQ @32 
+124 : 7 & '0' & 7E & 00; -- JEQ .cilhare2 
+125 : 6 & '0' & 82 & 00; -- JMP .cillharnaoe2 
+126 : 4 & '0' & 00 & 00; -- LDI $0 
+127 : 5 & '0' & 07 & 00; -- STA @7  
+128 : 5 & '1' & 25 & 00; -- STA @293 
+129 : 6 & '0' & 87 & 00; -- JMP .reornaincreenaTeo 
+130 : 1 & '0' & 07 & 00; -- LDA @7 
+131 : 2 & '0' & 01 & 00; -- SOMA @1 
+132 : 5 & '0' & 07 & 00; -- STA @7 
+133 : 5 & '1' & 25 & 00; -- STA @293 
+134 : 6 & '0' & 87 & 00; -- JMP .reornaincreenaTeo 
+135 : A & '0' & 00 & 00; -- RET 
+136 : 5 & '1' & FE & 00; -- STA @510 
+137 : 4 & '0' & 01 & 00; -- LDI $1 
+138 : 5 & '1' & 01 & 00; -- STA @257 
+139 : 4 & '0' & 00 & 00; -- LDI $0 
+140 : 5 & '1' & 20 & 00; -- STA @288 
+141 : 5 & '1' & 21 & 00; -- STA @289 
+142 : 5 & '1' & 22 & 00; -- STA @290 
+143 : 5 & '1' & 23 & 00; -- STA @291 
+144 : 5 & '1' & 24 & 00; -- STA @292 
+145 : 5 & '1' & 25 & 00; -- STA @293 
+146 : 1 & '1' & 40 & 00; -- LDA @320 
+147 : B & '0' & 0A & 00; -- CLT @10 
+148 : C & '0' & 97 & 00; -- JLT .ESCREVEUS 
+149 : 6 & '0' & 92 & 00; -- JMP .defineunidadedossegundos 
+150 : 0 & '0' & 00 & 00; -- NOP 
+151 : 5 & '0' & 02 & 00; -- STA @2 
+152 : 5 & '1' & 20 & 00; -- STA @288 
+153 : 1 & '1' & 61 & 00; -- LDA @353 
+154 : D & '0' & 01 & 00; -- AND @1 
+155 : 8 & '0' & 00 & 00; -- CEQ @0 
+156 : 7 & '0' & 99 & 00; -- JEQ .LEITURAKEY1_DS 
+157 : 5 & '1' & FE & 00; -- STA @510 
+158 : 0 & '0' & 00 & 00; -- NOP 
+159 : 1 & '1' & 40 & 00; -- LDA @320 
+160 : B & '0' & 24 & 00; -- CLT @36 
+161 : C & '0' & A4 & 00; -- JLT .ESCREVEDS 
+162 : 6 & '0' & 9F & 00; -- JMP .definedezenadossegundos 
+163 : 0 & '0' & 00 & 00; -- NOP 
+164 : 5 & '0' & 03 & 00; -- STA @3 
+165 : 5 & '1' & 21 & 00; -- STA @289 
+166 : 1 & '1' & 61 & 00; -- LDA @353 
+167 : D & '0' & 01 & 00; -- AND @1 
+168 : 8 & '0' & 00 & 00; -- CEQ @0 
+169 : 7 & '0' & A6 & 00; -- JEQ .LEITURAKEY1_UM 
+170 : 5 & '1' & FE & 00; -- STA @510 
+171 : 0 & '0' & 00 & 00; -- NOP 
+172 : 1 & '1' & 40 & 00; -- LDA @320 
+173 : B & '0' & 0A & 00; -- CLT @10 
+174 : C & '0' & B1 & 00; -- JLT .ESCREVEUM 
+175 : 6 & '0' & AC & 00; -- JMP .defineunidadedosinuos 
+176 : 0 & '0' & 00 & 00; -- NOP 
+177 : 5 & '0' & 04 & 00; -- STA @4 
+178 : 5 & '1' & 22 & 00; -- STA @290 
+179 : 0 & '0' & 00 & 00; -- NOP 
+180 : 1 & '1' & 61 & 00; -- LDA @353 
+181 : D & '0' & 01 & 00; -- AND @1 
+182 : 8 & '0' & 00 & 00; -- CEQ @0 
+183 : 7 & '0' & B4 & 00; -- JEQ .LEITURAKEY1_DM 
+184 : 5 & '1' & FE & 00; -- STA @510 
+185 : 0 & '0' & 00 & 00; -- NOP 
+186 : 1 & '1' & 40 & 00; -- LDA @320 
+187 : B & '0' & 24 & 00; -- CLT @36 
+188 : C & '0' & BF & 00; -- JLT .ESCREVEDM 
+189 : 6 & '0' & BA & 00; -- JMP .definedezenadosinuos 
+190 : 0 & '0' & 00 & 00; -- NOP 
+191 : 5 & '0' & 05 & 00; -- STA @5 
+192 : 5 & '1' & 23 & 00; -- STA @291 
+193 : 0 & '0' & 00 & 00; -- NOP 
+194 : 1 & '1' & 61 & 00; -- LDA @353 
+195 : D & '0' & 01 & 00; -- AND @1 
+196 : 8 & '0' & 00 & 00; -- CEQ @0 
+197 : 7 & '0' & C2 & 00; -- JEQ .LEITURAKEY1_UH 
+198 : 5 & '1' & FE & 00; -- STA @510 
+199 : 0 & '0' & 00 & 00; -- NOP 
+200 : 1 & '1' & 40 & 00; -- LDA @320 
+201 : B & '0' & 0A & 00; -- CLT @10 
+202 : C & '0' & CD & 00; -- JLT .ESCREVEUH 
+203 : 6 & '0' & C8 & 00; -- JMP .defineunidadedashoras 
+204 : 0 & '0' & 00 & 00; -- NOP 
+205 : 5 & '0' & 06 & 00; -- STA @6 
+206 : 5 & '1' & 24 & 00; -- STA @292 
+207 : 0 & '0' & 00 & 00; -- NOP 
+208 : 1 & '1' & 61 & 00; -- LDA @353 
+209 : D & '0' & 01 & 00; -- AND @1 
+210 : 8 & '0' & 00 & 00; -- CEQ @0 
+211 : 7 & '0' & D0 & 00; -- JEQ .LEITURAKEY1_DH 
+212 : 5 & '1' & FE & 00; -- STA @510 
+213 : 0 & '0' & 00 & 00; -- NOP 
+214 : 1 & '0' & 06 & 00; -- LDA @6 
+215 : B & '0' & 22 & 00; -- CLT @34 
+216 : C & '0' & DA & 00; -- JLT .MENORQUE4 
+217 : 6 & '0' & DF & 00; -- JMP .MAIORQUE4 
+218 : 1 & '1' & 40 & 00; -- LDA @320 
+219 : B & '0' & 21 & 00; -- CLT @33 
+220 : C & '0' & E4 & 00; -- JLT .ESCREVEDH 
+221 : 6 & '0' & DA & 00; -- JMP .MENORQUE4 
+222 : 0 & '0' & 00 & 00; -- NOP 
+223 : 1 & '1' & 40 & 00; -- LDA @320 
+224 : B & '0' & 20 & 00; -- CLT @32 
+225 : C & '0' & E4 & 00; -- JLT .ESCREVEDH 
+226 : 6 & '0' & DF & 00; -- JMP .MAIORQUE4 
+227 : 0 & '0' & 00 & 00; -- NOP 
+228 : 5 & '0' & 07 & 00; -- STA @7 
+229 : 5 & '1' & 25 & 00; -- STA @293 
+230 : A & '0' & 00 & 00; -- RET 
+END;
